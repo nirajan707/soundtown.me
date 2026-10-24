@@ -35,10 +35,140 @@ function words(value) {
   return normalize(value).split(/\s+/).filter((word) => word && !stopWords.has(word));
 }
 
+const devanagariConsonants = new Map([
+  ["क", "k"], ["ख", "kh"], ["ग", "g"], ["घ", "gh"], ["ङ", "ng"],
+  ["च", "ch"], ["छ", "chh"], ["ज", "j"], ["झ", "jh"], ["ञ", "ny"],
+  ["ट", "T"], ["ठ", "Th"], ["ड", "D"], ["ढ", "Dh"], ["ण", "N"],
+  ["त", "t"], ["थ", "th"], ["द", "d"], ["ध", "dh"], ["न", "n"],
+  ["प", "p"], ["फ", "ph"], ["ब", "b"], ["भ", "bh"], ["म", "m"],
+  ["य", "y"], ["र", "r"], ["ल", "l"], ["व", "w"], ["श", "sh"],
+  ["ष", "Sh"], ["स", "s"], ["ह", "h"], ["क्ष", "ksh"], ["त्र", "tr"], ["ज्ञ", "gy"]
+]);
+const devanagariVowels = new Map([
+  ["अ", "a"], ["आ", "aa"], ["इ", "i"], ["ई", "ii"], ["उ", "u"],
+  ["ऊ", "uu"], ["ऋ", "ri"], ["ए", "e"], ["ऐ", "ai"], ["ओ", "o"], ["औ", "au"]
+]);
+const devanagariVowelSigns = new Map([
+  ["ा", "aa"], ["ि", "i"], ["ी", "ii"], ["ु", "u"], ["ू", "uu"],
+  ["ृ", "ri"], ["े", "e"], ["ै", "ai"], ["ो", "o"], ["ौ", "au"]
+]);
+const romanConsonants = new Map([
+  ["kh", "ख"], ["gh", "घ"], ["ng", "ङ"], ["chh", "छ"], ["ch", "च"],
+  ["jh", "झ"], ["ny", "ञ"], ["Th", "ठ"], ["th", "थ"], ["Dh", "ढ"],
+  ["dh", "ध"], ["ph", "फ"], ["bh", "भ"], ["sh", "श"], ["Sh", "ष"],
+  ["ksh", "क्ष"], ["tr", "त्र"], ["gy", "ज्ञ"], ["T", "ट"], ["D", "ड"],
+  ["N", "ण"], ["k", "क"], ["g", "ग"], ["c", "च"], ["j", "ज"], ["t", "त"],
+  ["d", "द"], ["n", "न"], ["p", "प"], ["f", "फ"], ["b", "ब"], ["m", "म"],
+  ["y", "य"], ["r", "र"], ["l", "ल"], ["v", "व"], ["w", "व"], ["s", "स"],
+  ["h", "ह"], ["x", "क्ष"]
+]);
+const romanVowels = new Map([
+  ["aa", "आ"], ["ii", "ई"], ["uu", "ऊ"], ["ee", "ई"], ["oo", "ऊ"], ["ai", "ऐ"], ["au", "औ"],
+  ["ri", "ऋ"], ["a", "अ"], ["i", "इ"], ["u", "उ"], ["e", "ए"],
+  ["o", "ओ"]
+]);
+const romanVowelSigns = new Map([
+  ["आ", "ा"], ["इ", "ि"], ["ई", "ी"], ["उ", "ु"], ["ऊ", "ू"],
+  ["ऋ", "ृ"], ["ए", "े"], ["ऐ", "ै"], ["ओ", "ो"], ["औ", "ौ"]
+]);
+
+function devanagariToRomanized(text) {
+  const characters = Array.from(text);
+  let result = "";
+  for (let index = 0; index < characters.length; index += 1) {
+    const character = characters[index];
+    if (devanagariVowels.has(character)) {
+      result += devanagariVowels.get(character);
+    } else if (devanagariConsonants.has(character)) {
+      result += devanagariConsonants.get(character);
+      const next = characters[index + 1];
+      if (devanagariVowelSigns.has(next)) {
+        result += devanagariVowelSigns.get(next);
+        index += 1;
+      } else if (next !== "्") {
+        result += "a";
+      }
+    } else if (character === "्") {
+      continue;
+    } else if (character === "ं" || character === "ँ") {
+      result += "n";
+    } else if (character === "ः") {
+      result += "h";
+    } else {
+      result += character;
+    }
+  }
+  return result;
+}
+
+function romanizedToDevanagari(text) {
+  const tokens = [...romanConsonants.keys(), ...romanVowels.keys()]
+    .sort((left, right) => right.length - left.length);
+  let result = "";
+  let index = 0;
+  while (index < text.length) {
+    const token = tokens.find((candidate) => text.slice(index, index + candidate.length) === candidate)
+      || tokens.find((candidate) => text.slice(index, index + candidate.length).toLowerCase() === candidate.toLowerCase());
+    if (!token) {
+      result += text[index];
+      index += 1;
+      continue;
+    }
+    if (romanConsonants.has(token)) {
+      result += romanConsonants.get(token);
+      index += token.length;
+      const vowelKeys = [...romanVowels.keys()].sort((left, right) => right.length - left.length);
+      const vowel = vowelKeys.find((candidate) => text.slice(index, index + candidate.length) === candidate)
+        || vowelKeys.find((candidate) => text.slice(index, index + candidate.length).toLowerCase() === candidate.toLowerCase());
+      if (vowel) {
+        const independentVowel = romanVowels.get(vowel);
+        result += romanVowelSigns.get(independentVowel) || "";
+        index += vowel.length;
+      } else {
+        const nextIsConsonant = [...romanConsonants.keys()]
+          .some((candidate) => text.slice(index, index + candidate.length).toLowerCase() === candidate.toLowerCase());
+        if (nextIsConsonant) result += "्";
+      }
+      continue;
+    }
+    result += romanVowels.get(token);
+    index += token.length;
+  }
+  return result;
+}
+
+function lyricVersions(song) {
+  const lyrics = song.lyrics || {};
+  const romanized = Array.isArray(lyrics.romanized) ? lyrics.romanized : null;
+  const devanagari = Array.isArray(lyrics.devanagari) ? lyrics.devanagari : null;
+  if (romanized && !devanagari) {
+    return {
+      romanized,
+      devanagari: romanized.map((verse) => ({
+        ...verse,
+        lines: verse.lines.map(romanizedToDevanagari)
+      })),
+      generatedLanguage: "devanagari"
+    };
+  }
+  if (devanagari && !romanized) {
+    return {
+      romanized: devanagari.map((verse) => ({
+        ...verse,
+        lines: verse.lines.map(devanagariToRomanized)
+      })),
+      devanagari,
+      generatedLanguage: "romanized"
+    };
+  }
+  return { romanized, devanagari, generatedLanguage: null };
+}
+
 function searchableText(song) {
-  const lyricLines = Object.values(song.lyrics || {}).flatMap((language) =>
-    Array.isArray(language) ? language.flatMap((verse) => verse.lines || []) : []
-  );
+  const versions = lyricVersions(song);
+  const lyricLines = [versions.romanized, versions.devanagari]
+    .filter(Array.isArray)
+    .flatMap((language) => language.flatMap((verse) => verse.lines || []));
   const tags = Array.isArray(song.tags) ? song.tags : [];
   const keywords = Array.isArray(song.keywords) ? song.keywords : [];
   return [song.title, song.artist, ...tags, ...keywords, ...lyricLines].filter(Boolean).join(" ");
@@ -169,8 +299,9 @@ function renderLyrics(song) {
   const content = document.querySelector("#lyrics-content");
   const languageToggle = document.querySelector("#language-toggle");
   currentSong = song;
-  const hasRomanized = Array.isArray(song.lyrics?.romanized);
-  const hasDevanagari = Array.isArray(song.lyrics?.devanagari);
+  const versions = lyricVersions(song);
+  const hasRomanized = Array.isArray(versions.romanized);
+  const hasDevanagari = Array.isArray(versions.devanagari);
   if (!hasRomanized && !hasDevanagari) {
     languageToggle.hidden = true;
     content.classList.add("lyrics-notice");
@@ -189,7 +320,7 @@ function renderLyrics(song) {
     activeLyricsLanguage = hasRomanized ? "romanized" : "devanagari";
   }
   const isRomanized = activeLyricsLanguage === "romanized";
-  const verses = song.lyrics[activeLyricsLanguage];
+  const verses = versions[activeLyricsLanguage];
   const sections = verses.map((verse) => `
     <section class="lyric-verse">
       ${verse.label ? `<h3>${escapeHtml(verse.label)}</h3>` : ""}
@@ -197,9 +328,14 @@ function renderLyrics(song) {
     </section>`).join("");
   content.classList.remove("lyrics-notice");
   content.classList.add("lyrics-display");
+  const translationNote = versions.generatedLanguage === activeLyricsLanguage
+    ? "Automatically transliterated. Review spelling and pronunciation."
+    : isRomanized
+      ? "Romanized Nepali lyrics."
+      : "Nepali lyrics in Devanagari script.";
   content.innerHTML = `
     <div class="licensed-lyrics" lang="${isRomanized ? "ne-Latn" : "ne"}">${sections}</div>
-    <p class="translation-note">${isRomanized ? (hasDevanagari ? "Romanized Nepali lyrics." : "Romanized lyrics are not available yet.") : (hasRomanized ? "Nepali lyrics transliterated into Devanagari script." : "Nepali lyrics in Devanagari script. Romanized lyrics are not available yet.")}</p>`;
+    <p class="translation-note">${translationNote}</p>`;
   document.querySelectorAll(".language-option").forEach((button) => {
     const selected = button.dataset.language === activeLyricsLanguage;
     button.disabled = button.dataset.language === "devanagari" ? !hasDevanagari : !hasRomanized;
@@ -334,7 +470,7 @@ searchInputs.forEach((input, index) => {
 
 document.querySelectorAll(".language-option").forEach((button) => {
   button.addEventListener("click", () => {
-    if (!Array.isArray(currentSong?.lyrics?.[button.dataset.language])) return;
+    if (!Array.isArray(lyricVersions(currentSong || {})[button.dataset.language])) return;
     activeLyricsLanguage = button.dataset.language;
     renderLyrics(currentSong);
   });
