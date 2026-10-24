@@ -99,6 +99,7 @@ h1, h2, h3, p { margin-top: 0; }
 .video-section, .lyrics-section, .related-section { padding: 27px 0 31px; border-top: 1px solid var(--line); }
 .compact-heading { align-items: end; margin-bottom: 17px; }
 .compact-heading h2 { font-size: 25px; }
+.lyrics-guidance { margin: 7px 0 0; color: #858a80; font-size: 10px; line-height: 1.5; }
 .text-link { padding-bottom: 4px; color: #687b4a; font-size: 10px; font-weight: 600; white-space: nowrap; }
 .text-link:hover { text-decoration: underline; text-underline-offset: 3px; }
 .video-frame { width: 100%; position: relative; overflow: hidden; aspect-ratio: 16 / 9; border: 1px solid #e3e5df; border-radius: 7px; background: #eceee8; box-shadow: 0 8px 30px #24291a0b; }
