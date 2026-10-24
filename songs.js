@@ -64,11 +64,11 @@ window.SOUNDTOWN_SONGS = [
     "title": "Maya Sataula | Mayako Sambandha | MR Hyozu | Nepali Song Lyrics"
   },
   {
-    "id": "VgRT8I3pylE",
+    "id": "_wX33HGHOEY",
     "title": "Hitko Maya Sikri Xa Tolako- JALAKI | Chadi Jalapa | M Media Production | Lyrics"
   },
   {
-    "id": "_wX33HGHOEY",
+    "id": "7hnLiJ3ppq8",
     "title": "Timi Gham Sanga Baat Gara | Dada Pari Kanxi | Yabesh Thapa | TADHA LYRICS",
     "lyrics": {
       "romanized": [
@@ -150,7 +150,7 @@ window.SOUNDTOWN_SONGS = [
     }
   },
   {
-    "id": "7hnLiJ3ppq8",
+    "id": "ZZ7kbrbKN2o",
     "title": "बिर्सेको छैन मैले मेरो Rules 🖤🔥 | कहाँबाट आएको थिएँ | Nepali Lyrics #shorts"
   },
   {
