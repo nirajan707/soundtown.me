@@ -5,7 +5,7 @@ const resultLists = [document.querySelector("#header-results"), document.querySe
 const homeView = document.querySelector("#home-view");
 const songView = document.querySelector("#song-view");
 let visibleCount = 12;
-let activeLyricsLanguage = "nepali";
+let activeLyricsLanguage = "romanized";
 let currentSong = null;
 
 function escapeHtml(value) {
@@ -151,7 +151,7 @@ function renderLyrics(song) {
   const content = document.querySelector("#lyrics-content");
   const languageToggle = document.querySelector("#language-toggle");
   currentSong = song;
-  if (!song.lyrics || !Array.isArray(song.lyrics.nepali) || !Array.isArray(song.lyrics.english)) {
+  if (!song.lyrics || !Array.isArray(song.lyrics.romanized)) {
     languageToggle.hidden = true;
     content.classList.add("lyrics-notice");
     content.classList.remove("lyrics-display");
@@ -165,7 +165,9 @@ function renderLyrics(song) {
     return;
   }
   languageToggle.hidden = false;
-  const isNepali = activeLyricsLanguage === "nepali";
+  const hasDevanagari = Array.isArray(song.lyrics.devanagari);
+  if (activeLyricsLanguage === "devanagari" && !hasDevanagari) activeLyricsLanguage = "romanized";
+  const isRomanized = activeLyricsLanguage === "romanized";
   const verses = song.lyrics[activeLyricsLanguage];
   const sections = verses.map((verse) => `
     <section class="lyric-verse">
@@ -175,10 +177,11 @@ function renderLyrics(song) {
   content.classList.remove("lyrics-notice");
   content.classList.add("lyrics-display");
   content.innerHTML = `
-    <div class="licensed-lyrics" lang="${isNepali ? "ne-Latn" : "en"}">${sections}</div>
-    <p class="translation-note">${isNepali ? "Original lyrics in Romanized Nepali." : "English meaning-based translation; some poetic wording is approximate."}</p>`;
+    <div class="licensed-lyrics" lang="${isRomanized ? "ne-Latn" : "ne"}">${sections}</div>
+    <p class="translation-note">${isRomanized ? (hasDevanagari ? "Romanized Nepali lyrics." : "Romanized Nepali lyrics. Devanagari lyrics have not been added yet.") : "Nepali lyrics in Devanagari script."}</p>`;
   document.querySelectorAll(".language-option").forEach((button) => {
     const selected = button.dataset.language === activeLyricsLanguage;
+    button.disabled = button.dataset.language === "devanagari" && !hasDevanagari;
     button.classList.toggle("is-active", selected);
     button.setAttribute("aria-pressed", String(selected));
   });
@@ -197,7 +200,7 @@ function renderRelated(song) {
 function openSong(song, updateHash = true) {
   if (!song || !/^[A-Za-z0-9_-]{11}$/.test(song.id)) return;
   const title = songName(song);
-  activeLyricsLanguage = "nepali";
+  activeLyricsLanguage = "romanized";
   homeView.hidden = true;
   songView.hidden = false;
   document.querySelector("#song-title").textContent = `${title} Lyrics`;
@@ -254,7 +257,7 @@ searchInputs.forEach((input, index) => {
 
 document.querySelectorAll(".language-option").forEach((button) => {
   button.addEventListener("click", () => {
-    if (!currentSong?.lyrics?.[button.dataset.language]) return;
+    if (!Array.isArray(currentSong?.lyrics?.[button.dataset.language])) return;
     activeLyricsLanguage = button.dataset.language;
     renderLyrics(currentSong);
   });

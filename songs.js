@@ -71,7 +71,7 @@ window.SOUNDTOWN_SONGS = [
     "id": "_wX33HGHOEY",
     "title": "Timi Gham Sanga Baat Gara | Dada Pari Kanxi | Yabesh Thapa | TADHA LYRICS",
     "lyrics": {
-      "nepali": [
+      "romanized": [
         {
           "label": "Verse 1",
           "lines": [
@@ -146,81 +146,7 @@ window.SOUNDTOWN_SONGS = [
           ]
         }
       ],
-      "english": [
-        {
-          "label": "Verse 1",
-          "lines": [
-            "Come a little closer, hum along",
-            "Sing the melodies of love you know",
-            "Don't be afraid to fall in love",
-            "Look, I'm here—and here you are too"
-          ]
-        },
-        {
-          "label": "",
-          "lines": [
-            "The distance between us",
-            "Is only one small obstacle",
-            "What kind of story would it be",
-            "Without a little imperfection?"
-          ]
-        },
-        {
-          "label": "Pre-Chorus",
-          "lines": [
-            "You talk to the sun; I speak with the moon",
-            "You fly with the breeze; I rise above the clouds",
-            "You listen from far away while I keep singing",
-            "For love, for love"
-          ]
-        },
-        {
-          "label": "Chorus",
-          "lines": [
-            "Even though we're far apart",
-            "My love is still as deep as ever",
-            "The unfinished words inside my heart",
-            "Bloom and blossom when you're here",
-            "",
-            "Love from far away, you so far away",
-            "Love, so very far away",
-            "Love from far away, you so far away",
-            "Love, so very far away"
-          ]
-        },
-        {
-          "label": "Verse 2",
-          "lines": [
-            "You're far away, but my love",
-            "Runs deep, because it is true",
-            "I wake early in the morning and think of you",
-            "Hoping you can hear me, I send these words"
-          ]
-        },
-        {
-          "label": "Pre-Chorus",
-          "lines": [
-            "You talk to the moon; I speak with the sun",
-            "You sit among the clouds; I fly on the breeze",
-            "Keep singing your song; I'll listen from far away",
-            "For love, for love"
-          ]
-        },
-        {
-          "label": "Chorus",
-          "lines": [
-            "Even though we're far apart",
-            "My love is still so deep",
-            "The unfinished words inside my heart",
-            "Bloom and blossom when you're here",
-            "",
-            "Love from far away, you so far away",
-            "Love, so very far away",
-            "Love from far away, you so far away",
-            "Love, so very far away"
-          ]
-        }
-      ]
+      "devanagari": null
     }
   },
   {
