@@ -78,6 +78,14 @@ h1 em, h2 em { color: #71834e; font-weight: 500; }
 .featured-text p { margin: 6px 0 4px; font-family: var(--serif); font-size: 16px; font-style: italic; }
 .featured-credit { color: #999a90; font-size: 9px; }
 .featured-decoration { position: absolute; right: 25px; color: #e3e5d6; font-size: 77px; line-height: 1; }
+.channel-section { padding-top: 38px; }
+.channel-section .section-heading { align-items: end; margin-bottom: 16px; }
+.channel-link { display: inline-flex; align-items: center; gap: 7px; padding-bottom: 5px; color: #586740; font-size: 10px; font-weight: 600; }
+.channel-link span { font-size: 14px; transition: transform .2s; }
+.channel-link:hover span { transform: translate(2px, -2px); }
+.channel-player { position: relative; overflow: hidden; width: 100%; aspect-ratio: 16 / 9; border: 1px solid #e5e3db; border-radius: 7px; background: #e9e9df; }
+.channel-player iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.channel-caption { margin: 9px 1px 0; color: #999a90; font-size: 9px; }
 .library-section { padding-top: 42px; }
 .section-heading { display: flex; align-items: end; justify-content: space-between; margin-bottom: 21px; }
 .section-heading .eyebrow { font-size: 8px; }
@@ -183,6 +191,10 @@ kbd { display: grid; width: 17px; height: 19px; place-items: center; border: 1px
   .featured-icon { width: 34px; height: 34px; }
   .featured-text p { max-width: 250px; font-size: 14px; line-height: 1.4; }
   .featured-decoration { right: 9px; font-size: 55px; }
+  .channel-section { padding-top: 30px; }
+  .channel-section .section-heading { gap: 10px; }
+  .channel-section .section-heading h2 { font-size: 22px; }
+  .channel-link { font-size: 9px; white-space: nowrap; }
   .library-section { padding-top: 33px; }
   h2 { font-size: 25px; }
   .library-layout { grid-template-columns: 1fr; }
