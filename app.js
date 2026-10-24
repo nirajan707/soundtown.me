@@ -5,6 +5,8 @@ const resultLists = [document.querySelector("#header-results"), document.querySe
 const homeView = document.querySelector("#home-view");
 const songView = document.querySelector("#song-view");
 let visibleCount = 12;
+let activeLyricsLanguage = "nepali";
+let currentSong = null;
 
 function escapeHtml(value) {
   return String(value).replace(/[&<>"']/g, (character) => ({
@@ -147,7 +149,12 @@ function renderResults(query, list) {
 
 function renderLyrics(song) {
   const content = document.querySelector("#lyrics-content");
-  if (!song.lyrics) {
+  const languageToggle = document.querySelector("#language-toggle");
+  currentSong = song;
+  if (!song.lyrics || !Array.isArray(song.lyrics.nepali) || !Array.isArray(song.lyrics.english)) {
+    languageToggle.hidden = true;
+    content.classList.add("lyrics-notice");
+    content.classList.remove("lyrics-display");
     content.innerHTML = `
       <span class="notice-icon" aria-hidden="true">♪</span>
       <div>
@@ -157,7 +164,24 @@ function renderLyrics(song) {
       </div>`;
     return;
   }
-  content.innerHTML = `<div class="licensed-lyrics">${escapeHtml(song.lyrics).replace(/\n/g, "<br>")}</div>`;
+  languageToggle.hidden = false;
+  const isNepali = activeLyricsLanguage === "nepali";
+  const verses = song.lyrics[activeLyricsLanguage];
+  const sections = verses.map((verse) => `
+    <section class="lyric-verse">
+      ${verse.label ? `<h3>${escapeHtml(verse.label)}</h3>` : ""}
+      <p>${verse.lines.map(escapeHtml).join("<br>")}</p>
+    </section>`).join("");
+  content.classList.remove("lyrics-notice");
+  content.classList.add("lyrics-display");
+  content.innerHTML = `
+    <div class="licensed-lyrics" lang="${isNepali ? "ne-Latn" : "en"}">${sections}</div>
+    <p class="translation-note">${isNepali ? "Original lyrics in Romanized Nepali." : "English meaning-based translation; some poetic wording is approximate."}</p>`;
+  document.querySelectorAll(".language-option").forEach((button) => {
+    const selected = button.dataset.language === activeLyricsLanguage;
+    button.classList.toggle("is-active", selected);
+    button.setAttribute("aria-pressed", String(selected));
+  });
 }
 
 function renderRelated(song) {
@@ -173,6 +197,7 @@ function renderRelated(song) {
 function openSong(song, updateHash = true) {
   if (!song || !/^[A-Za-z0-9_-]{11}$/.test(song.id)) return;
   const title = songName(song);
+  activeLyricsLanguage = "nepali";
   homeView.hidden = true;
   songView.hidden = false;
   document.querySelector("#song-title").textContent = `${title} Lyrics`;
@@ -182,7 +207,6 @@ function openSong(song, updateHash = true) {
   document.querySelector("#song-video").src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(song.id)}?rel=0`;
   const videoLink = songUrl(song);
   document.querySelector("#watch-youtube").href = videoLink;
-  document.querySelector("#lyrics-video-link").href = videoLink;
   renderLyrics(song);
   renderRelated(song);
   document.title = `${title} lyrics | Sound Town`;
@@ -226,6 +250,14 @@ searchInputs.forEach((input, index) => {
     if (input.value.trim()) renderResults(input.value, resultLists[index]);
   });
   input.form.addEventListener("submit", (event) => handleSearchSubmit(event, input));
+});
+
+document.querySelectorAll(".language-option").forEach((button) => {
+  button.addEventListener("click", () => {
+    if (!currentSong?.lyrics?.[button.dataset.language]) return;
+    activeLyricsLanguage = button.dataset.language;
+    renderLyrics(currentSong);
+  });
 });
 
 document.addEventListener("click", (event) => {

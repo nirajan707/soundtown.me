@@ -105,12 +105,22 @@ h1, h2, h3, p { margin-top: 0; }
 .video-frame { width: 100%; position: relative; overflow: hidden; aspect-ratio: 16 / 9; border: 1px solid #e3e5df; border-radius: 7px; background: #eceee8; box-shadow: 0 8px 30px #24291a0b; }
 .video-frame iframe { width: 100%; height: 100%; position: absolute; inset: 0; border: 0; }
 .lyrics-section { padding-bottom: 35px; }
+.language-toggle { display: inline-flex; flex: 0 0 auto; gap: 3px; padding: 3px; border: 1px solid #e4e6df; border-radius: 6px; background: #f0f1ed; }
+.language-option { padding: 7px 10px; border: 0; border-radius: 4px; background: transparent; color: #777d71; cursor: pointer; font-size: 9px; white-space: nowrap; }
+.language-option:hover { color: #49563a; }
+.language-option.is-active { background: white; color: #4f6139; box-shadow: 0 1px 4px #252a1c14; font-weight: 600; }
 .lyrics-notice { display: flex; gap: 16px; padding: 21px; border: 1px solid #e3e6db; border-radius: 6px; background: #f0f2eb; }
 .notice-icon { width: 38px; height: 38px; flex: 0 0 auto; display: grid; place-items: center; border: 1px solid #dce2d0; border-radius: 50%; color: #788b51; font-size: 19px; }
 .lyrics-notice h3 { margin: 1px 0 6px; font-family: var(--serif); font-size: 17px; font-weight: 600; }
 .lyrics-notice p { max-width: 700px; margin: 0 0 8px; color: #73786e; font-size: 11px; line-height: 1.7; }
 .lyrics-notice a { color: #627645; font-size: 10px; font-weight: 600; }
-.licensed-lyrics { padding: 22px; border: 1px solid #e7e8e2; border-radius: 6px; background: white; font-family: var(--serif); font-size: 16px; line-height: 2; white-space: pre-wrap; }
+.lyrics-display { overflow: hidden; border: 1px solid #e7e8e2; border-radius: 6px; background: white; }
+.licensed-lyrics { padding: 24px 27px 14px; font-family: var(--serif); font-size: 16px; line-height: 1.9; }
+.lyric-verse { margin: 0 0 21px; }
+.lyric-verse h3 { margin: 0 0 8px; color: #73834f; font-family: var(--sans); font-size: 9px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; }
+.lyric-verse p { margin: 0; white-space: pre-line; }
+.lyric-verse p br + br { display: block; margin-top: 8px; content: ""; }
+.translation-note { margin: 0; padding: 12px 27px; border-top: 1px solid #eceee8; color: #858a80; font-size: 9px; }
 .related-section { border-bottom: 1px solid var(--line); }
 .related-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
 .related-grid .card-title { font-size: 13px; }
@@ -176,6 +186,8 @@ a.social-link:hover { border-color: #c2cbaa; background: #f3f5ee; }
   .song-heading { padding-top: 27px; }
   .song-heading h1 { font-size: 35px; letter-spacing: -1.2px; }
   .compact-heading h2 { font-size: 22px; }
+  .language-toggle { gap: 1px; }
+  .language-option { padding: 7px 6px; font-size: 8px; }
   .text-link { font-size: 9px; }
   .lyrics-notice { gap: 11px; padding: 15px; }
   .notice-icon { width: 31px; height: 31px; }

@@ -69,7 +69,159 @@ window.SOUNDTOWN_SONGS = [
   },
   {
     "id": "_wX33HGHOEY",
-    "title": "Timi Gham Sanga Baat Gara | Dada Pari Kanxi | Yabesh Thapa | TADHA LYRICS"
+    "title": "Timi Gham Sanga Baat Gara | Dada Pari Kanxi | Yabesh Thapa | TADHA LYRICS",
+    "lyrics": {
+      "nepali": [
+        {
+          "label": "Verse 1",
+          "lines": [
+            "Najeek aauna, gungunauna",
+            "Piratika dhun timile jaaney jati",
+            "Maya launa nadarauna",
+            "Herana mah chu, chau timi pani"
+          ]
+        },
+        {
+          "label": "",
+          "lines": [
+            "Hami bichko duri euta",
+            "Baadha matrai ho",
+            "Kathama ek dui ota",
+            "Apurnata na bhaye ta k maja bho?"
+          ]
+        },
+        {
+          "label": "Pre-Chorus",
+          "lines": [
+            "Timi ghaam sanga baat gara, jun sanga bolchu mah",
+            "Timi batashama udiaaunu, badal mathi hunchu mah",
+            "Timi tadhai bata sunney garnu, geet gaudai hunchu mah",
+            "Mayaka, mayaka"
+          ]
+        },
+        {
+          "label": "Chorus",
+          "lines": [
+            "Tadha tadha bhayeni",
+            "Mero maya jhai gaadha gaadhai cha",
+            "Adhuro kuro mutu mero",
+            "Timi bhaye faldo fuldai cha",
+            "",
+            "Tadha tadha maya, tadha tadha timi",
+            "Tadha tadha dherai tadha maya",
+            "Tadha tadha maya, tadha tadha timi",
+            "Tadha tadha dherai tadha maya"
+          ]
+        },
+        {
+          "label": "Verse 2",
+          "lines": [
+            "Tadha timi chau tara, maya chahi mero",
+            "Gaadha nai cha kaaran maya mero chokho",
+            "Bihanai saberai uthera, timi samjhanchu",
+            "Sunirachau hola bhani aasha boki bhanchu"
+          ]
+        },
+        {
+          "label": "Pre-Chorus",
+          "lines": [
+            "Timi jun sanga baat gara, ghaam sanga bolchu mah",
+            "Timi badalma basa, batashma udi aauchu mah",
+            "Timi geet gaairakhnu, tadha bata sundai garchu mah",
+            "Mayaka, mayaka"
+          ]
+        },
+        {
+          "label": "Chorus",
+          "lines": [
+            "Tadha tadha bhayeni",
+            "Mero maya chai gaadha gaadhai cha",
+            "Adhuro kuro mutu mero",
+            "Timi bhaye faldo fuldai cha",
+            "",
+            "Tadha tadha maya, tadha tadha timi",
+            "Tadha tadha dherai tadha maya",
+            "Tadha tadha maya, tadha tadha timi",
+            "Tadha tadha dherai tadha maya"
+          ]
+        }
+      ],
+      "english": [
+        {
+          "label": "Verse 1",
+          "lines": [
+            "Come a little closer, hum along",
+            "Sing the melodies of love you know",
+            "Don't be afraid to fall in love",
+            "Look, I'm here—and here you are too"
+          ]
+        },
+        {
+          "label": "",
+          "lines": [
+            "The distance between us",
+            "Is only one small obstacle",
+            "What kind of story would it be",
+            "Without a little imperfection?"
+          ]
+        },
+        {
+          "label": "Pre-Chorus",
+          "lines": [
+            "You talk to the sun; I speak with the moon",
+            "You fly with the breeze; I rise above the clouds",
+            "You listen from far away while I keep singing",
+            "For love, for love"
+          ]
+        },
+        {
+          "label": "Chorus",
+          "lines": [
+            "Even though we're far apart",
+            "My love is still as deep as ever",
+            "The unfinished words inside my heart",
+            "Bloom and blossom when you're here",
+            "",
+            "Love from far away, you so far away",
+            "Love, so very far away",
+            "Love from far away, you so far away",
+            "Love, so very far away"
+          ]
+        },
+        {
+          "label": "Verse 2",
+          "lines": [
+            "You're far away, but my love",
+            "Runs deep, because it is true",
+            "I wake early in the morning and think of you",
+            "Hoping you can hear me, I send these words"
+          ]
+        },
+        {
+          "label": "Pre-Chorus",
+          "lines": [
+            "You talk to the moon; I speak with the sun",
+            "You sit among the clouds; I fly on the breeze",
+            "Keep singing your song; I'll listen from far away",
+            "For love, for love"
+          ]
+        },
+        {
+          "label": "Chorus",
+          "lines": [
+            "Even though we're far apart",
+            "My love is still so deep",
+            "The unfinished words inside my heart",
+            "Bloom and blossom when you're here",
+            "",
+            "Love from far away, you so far away",
+            "Love, so very far away",
+            "Love from far away, you so far away",
+            "Love, so very far away"
+          ]
+        }
+      ]
+    }
   },
   {
     "id": "7hnLiJ3ppq8",
