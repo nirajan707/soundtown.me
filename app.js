@@ -169,7 +169,9 @@ function renderLyrics(song) {
   const content = document.querySelector("#lyrics-content");
   const languageToggle = document.querySelector("#language-toggle");
   currentSong = song;
-  if (!song.lyrics || !Array.isArray(song.lyrics.romanized)) {
+  const hasRomanized = Array.isArray(song.lyrics?.romanized);
+  const hasDevanagari = Array.isArray(song.lyrics?.devanagari);
+  if (!hasRomanized && !hasDevanagari) {
     languageToggle.hidden = true;
     content.classList.add("lyrics-notice");
     content.classList.remove("lyrics-display");
@@ -183,8 +185,9 @@ function renderLyrics(song) {
     return;
   }
   languageToggle.hidden = false;
-  const hasDevanagari = Array.isArray(song.lyrics.devanagari);
-  if (activeLyricsLanguage === "devanagari" && !hasDevanagari) activeLyricsLanguage = "romanized";
+  if (activeLyricsLanguage === "devanagari" ? !hasDevanagari : !hasRomanized) {
+    activeLyricsLanguage = hasRomanized ? "romanized" : "devanagari";
+  }
   const isRomanized = activeLyricsLanguage === "romanized";
   const verses = song.lyrics[activeLyricsLanguage];
   const sections = verses.map((verse) => `
@@ -196,10 +199,10 @@ function renderLyrics(song) {
   content.classList.add("lyrics-display");
   content.innerHTML = `
     <div class="licensed-lyrics" lang="${isRomanized ? "ne-Latn" : "ne"}">${sections}</div>
-    <p class="translation-note">${isRomanized ? (hasDevanagari ? "Romanized Nepali lyrics." : "Romanized Nepali lyrics. Devanagari lyrics have not been added yet.") : "Nepali lyrics transliterated into Devanagari script."}</p>`;
+    <p class="translation-note">${isRomanized ? (hasDevanagari ? "Romanized Nepali lyrics." : "Romanized lyrics are not available yet.") : (hasRomanized ? "Nepali lyrics transliterated into Devanagari script." : "Nepali lyrics in Devanagari script. Romanized lyrics are not available yet.")}</p>`;
   document.querySelectorAll(".language-option").forEach((button) => {
     const selected = button.dataset.language === activeLyricsLanguage;
-    button.disabled = button.dataset.language === "devanagari" && !hasDevanagari;
+    button.disabled = button.dataset.language === "devanagari" ? !hasDevanagari : !hasRomanized;
     button.classList.toggle("is-active", selected);
     button.setAttribute("aria-pressed", String(selected));
   });
