@@ -196,7 +196,7 @@ function renderLyrics(song) {
   content.classList.add("lyrics-display");
   content.innerHTML = `
     <div class="licensed-lyrics" lang="${isRomanized ? "ne-Latn" : "ne"}">${sections}</div>
-    <p class="translation-note">${isRomanized ? (hasDevanagari ? "Romanized Nepali lyrics." : "Romanized Nepali lyrics. Devanagari lyrics have not been added yet.") : "Nepali lyrics in Devanagari script."}</p>`;
+    <p class="translation-note">${isRomanized ? (hasDevanagari ? "Romanized Nepali lyrics." : "Romanized Nepali lyrics. Devanagari lyrics have not been added yet.") : "Nepali lyrics transliterated into Devanagari script."}</p>`;
   document.querySelectorAll(".language-option").forEach((button) => {
     const selected = button.dataset.language === activeLyricsLanguage;
     button.disabled = button.dataset.language === "devanagari" && !hasDevanagari;
