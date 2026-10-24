@@ -3,190 +3,154 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#f5f4ef" />
-    <meta
-      name="description"
-      content="Sound Town brings songs and lyrics together. Explore music, save the words you love, and read along."
-    />
-    <meta property="og:title" content="Sound Town — Lyrics worth finding" />
-    <meta
-      property="og:description"
-      content="Explore songs, save the words you love, and read along with Sound Town."
-    />
-    <title>Sound Town — Lyrics worth finding</title>
+    <meta name="theme-color" content="#f7f7f5" />
+    <meta name="description" content="Search Sound Town's Nepali song library. Find official videos, song details, related tracks, and lyrics information." />
+    <meta property="og:title" content="Sound Town — Song Lyrics" />
+    <meta property="og:description" content="Find a song, watch its Sound Town video, and explore related music." />
+    <title>Sound Town — Song Lyrics</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
+    <script src="songs.js" defer></script>
     <script src="app.js" defer></script>
   </head>
   <body>
-    <div class="app-shell">
-      <aside class="sidebar" aria-label="Main navigation">
-        <a class="brand" href="#" aria-label="Sound Town home">
-          <span class="brand-mark" aria-hidden="true">S</span>
-          <span>soundtown<span class="brand-period">.</span></span>
-        </a>
+    <header class="site-header">
+      <a class="brand" href="#" id="home-link" aria-label="Sound Town home">
+        <span class="brand-mark" aria-hidden="true">S</span>
+        <span class="brand-name">Sound Town<span class="brand-period">.</span></span>
+      </a>
+      <form class="search-form header-search" id="header-search-form" role="search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8" /><path d="m16 16 4.5 4.5" /></svg>
+        <input id="header-search" type="search" placeholder="Search songs, artists, or lyrics..." autocomplete="off" aria-label="Search songs" />
+        <kbd>/</kbd>
+        <div class="search-results" id="header-results" role="listbox" aria-label="Song search results" hidden></div>
+      </form>
+      <a class="header-channel" href="https://www.youtube.com/@soundtown77" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 7.2a2.8 2.8 0 0 0-2-2C18.2 4.7 12 4.7 12 4.7s-6.2 0-8 .5a2.8 2.8 0 0 0-2 2A29 29 0 0 0 1.5 12 29 29 0 0 0 2 16.8a2.8 2.8 0 0 0 2 2c1.8.5 8 .5 8 .5s6.2 0 8-.5a2.8 2.8 0 0 0 2-2 29 29 0 0 0 .5-4.8 29 29 0 0 0-.5-4.8Z" /><path d="m10 15.5 5-3.5-5-3.5v7Z" /></svg>
+        <span>Sound Town on YouTube</span>
+        <span aria-hidden="true">↗</span>
+      </a>
+    </header>
 
-        <p class="nav-label">YOUR SPACE</p>
-        <nav class="primary-nav">
-          <button class="nav-item is-active" data-view="discover">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 1.9 5.8L20 11l-6.1 2.2L12 19l-2-5.8L4 11l6-2.2L12 3Z" /><path d="m19 15 .9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9L19 15Z" /></svg>
-            <span>Discover</span>
-          </button>
-          <button class="nav-item" data-view="saved">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.8A1.8 1.8 0 0 1 7.8 3h8.4A1.8 1.8 0 0 1 18 4.8V21l-6-3.7L6 21V4.8Z" /></svg>
-            <span>Saved lyrics</span>
-            <span class="saved-count" id="saved-count">0</span>
-          </button>
+    <main class="page-shell">
+      <section class="home-view" id="home-view">
+        <div class="hero">
+          <span class="eyebrow"><span class="eyebrow-line"></span> SOUND TOWN SONG LIBRARY</span>
+          <h1>Find the song.<br /><em>Keep the feeling.</em></h1>
+          <p class="hero-copy">Search the Sound Town collection by song title, artist, or a few words you remember.</p>
+          <form class="search-form hero-search" id="hero-search-form" role="search">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8" /><path d="m16 16 4.5 4.5" /></svg>
+            <input id="hero-search" type="search" placeholder="Try “Dada Pari song lyrics”..." autocomplete="off" aria-label="Search the Sound Town song library" />
+            <button type="submit">Search <span aria-hidden="true">→</span></button>
+            <div class="search-results" id="hero-results" role="listbox" aria-label="Song search results" hidden></div>
+          </form>
+          <div class="quick-searches">
+            <span>TRY SEARCHING</span>
+            <button type="button" data-query="Dada Pari">Dada Pari</button>
+            <button type="button" data-query="Nepali rap">Nepali rap</button>
+            <button type="button" data-query="Maya">Maya</button>
+          </div>
+        </div>
+
+        <section class="catalog-section" aria-labelledby="catalog-heading">
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow"><span class="eyebrow-line"></span> THE COLLECTION</span>
+              <h2 id="catalog-heading">Recently added <em>songs.</em></h2>
+            </div>
+            <span class="catalog-count" id="catalog-count"></span>
+          </div>
+          <div class="song-grid" id="catalog-grid" aria-live="polite"></div>
+          <p class="catalog-note">Song titles and videos are from the <a href="https://www.youtube.com/@soundtown77" target="_blank" rel="noopener noreferrer">Sound Town YouTube channel</a>.</p>
+        </section>
+      </section>
+
+      <section class="song-view" id="song-view" hidden>
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="#" data-home>Home</a><span aria-hidden="true">›</span><span id="breadcrumb-title">Song lyrics</span>
         </nav>
+        <article>
+          <header class="song-heading">
+            <span class="eyebrow"><span class="eyebrow-line"></span> SOUND TOWN SONG ENTRY</span>
+            <h1 id="song-title">Song title lyrics</h1>
+            <p class="song-byline" id="song-byline"></p>
+          </header>
 
-        <div class="sidebar-note">
-          <span class="note-sparkle" aria-hidden="true">✳</span>
-          <p>Some words stay with you long after the song ends.</p>
-          <span class="note-signature">Keep the ones that do.</span>
-        </div>
-
-        <div class="sidebar-bottom">
-          <span class="status-dot"></span>
-          <span>A little space for the words</span>
-        </div>
-      </aside>
-
-      <main class="main-content">
-        <header class="topbar">
-          <div class="breadcrumb"><span>YOUR SPACE</span><span class="breadcrumb-slash">/</span><strong id="page-label">Discover</strong></div>
-          <div class="topbar-right">
-            <span class="topbar-date" id="today-date"></span>
-            <div class="avatar" aria-label="Your profile">V</div>
-          </div>
-        </header>
-
-        <section class="welcome-section">
-          <div class="welcome-copy">
-            <span class="eyebrow"><span class="eyebrow-line"></span> WORDS MEET MUSIC</span>
-            <h1>Find the words<br />behind <em>the music.</em></h1>
-            <p class="welcome-description">For the lines you sing out loud, and the ones you keep to yourself.</p>
-            <a class="explore-link" href="#song-library">Explore the collection <span aria-hidden="true">↘</span></a>
-          </div>
-          <div class="welcome-art" aria-hidden="true">
-            <div class="art-orbit orbit-one"></div>
-            <div class="art-orbit orbit-two"></div>
-            <span class="art-note note-one">♪</span>
-            <span class="art-note note-two">♫</span>
-            <div class="art-quote">
-              <span class="quote-mark">“</span>
-              <p>There is a song<br />for every feeling.</p>
-              <span class="quote-caption">A SMALL REMINDER</span>
-            </div>
-            <span class="art-spark art-spark-one">✳</span>
-            <span class="art-spark art-spark-two">✳</span>
-          </div>
-        </section>
-
-        <section class="featured-strip" aria-label="Featured lyric">
-          <div class="featured-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13" /><circle cx="6" cy="18" r="3" /><circle cx="18" cy="16" r="3" /></svg>
-          </div>
-          <div class="featured-text">
-            <span class="featured-label">TODAY'S LITTLE DISCOVERY</span>
-            <p>“We were made of all the things we almost said.”</p>
-            <span class="featured-credit">A made-up line for a song not yet written</span>
-          </div>
-          <span class="featured-decoration" aria-hidden="true">✳</span>
-        </section>
-
-        <section class="channel-section" aria-labelledby="channel-heading">
-          <div class="section-heading">
-            <div>
-              <span class="eyebrow"><span class="eyebrow-line"></span> FROM SOUND TOWN</span>
-              <h2 id="channel-heading">Songs, all in <em>one place.</em></h2>
-            </div>
-            <a class="channel-link" href="https://www.youtube.com/@soundtown77" target="_blank" rel="noopener noreferrer">
-              Visit the channel <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-          <div class="channel-player">
-            <iframe
-              src="https://www.youtube-nocookie.com/embed/videoseries?list=UUXrMUF5vqrczg5NNHyyYHlg"
-              title="All videos from the Sound Town YouTube channel"
-              loading="lazy"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-            ></iframe>
-          </div>
-          <p class="channel-caption">The channel's public uploads playlist, shown by YouTube.</p>
-        </section>
-
-        <section class="library-section" id="song-library">
-          <div class="section-heading">
-            <div>
-              <span class="eyebrow"><span class="eyebrow-line"></span> THE LYRIC LIBRARY</span>
-              <h2 id="library-heading">Words worth <em>keeping.</em></h2>
-            </div>
-            <span class="song-total" id="song-total">06 SONGS</span>
-          </div>
-
-          <div class="library-controls">
-            <label class="search-box">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8" /><path d="m16 16 4.5 4.5" /></svg>
-              <input id="song-search" type="search" placeholder="Search a song, artist, or feeling..." autocomplete="off" />
-              <kbd>/</kbd>
-            </label>
-            <div class="genre-filters" role="group" aria-label="Filter songs by genre">
-              <button class="filter-chip is-selected" data-genre="All">All songs</button>
-              <button class="filter-chip" data-genre="Indie">Indie</button>
-              <button class="filter-chip" data-genre="Soul">Soul</button>
-              <button class="filter-chip" data-genre="Folk">Folk</button>
-              <button class="filter-chip" data-genre="Pop">Pop</button>
-            </div>
-          </div>
-
-          <div class="library-layout">
-            <div class="song-grid" id="song-grid" aria-live="polite"></div>
-            <aside class="reader-card" id="reader-card" aria-label="Selected song lyrics">
-              <div class="reader-topline">
-                <span class="reader-label"><span class="reader-live"></span> NOW READING</span>
-                <button class="icon-button close-reader" id="close-reader" aria-label="Close lyrics" title="Close lyrics">×</button>
+          <section class="video-section" aria-labelledby="video-heading">
+            <div class="section-heading compact-heading">
+              <div>
+                <span class="eyebrow"><span class="eyebrow-line"></span> OFFICIAL CHANNEL VIDEO</span>
+                <h2 id="video-heading">Watch on <em>Sound Town.</em></h2>
               </div>
-              <div class="reader-cover" id="reader-cover">
-                <span class="cover-glyph" id="cover-glyph">✳</span>
-                <span class="cover-index" id="cover-index">NO. 01</span>
+              <a class="text-link" id="watch-youtube" target="_blank" rel="noopener noreferrer">Open on YouTube ↗</a>
+            </div>
+            <div class="video-frame">
+              <iframe id="song-video" title="Sound Town song video" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          </section>
+
+          <section class="lyrics-section" aria-labelledby="lyrics-heading">
+            <div class="section-heading compact-heading">
+              <div>
+                <span class="eyebrow"><span class="eyebrow-line"></span> THE WORDS</span>
+                <h2 id="lyrics-heading">LYRICS: <em id="lyrics-song-title">Song title</em></h2>
               </div>
-              <div class="reader-song-heading">
-                <div>
-                  <h3 id="reader-title">Small Hours</h3>
-                  <p id="reader-artist">June Wilder <span>·</span> <span id="reader-album">The Quiet Between</span></p>
-                </div>
-                <button class="icon-button reader-save" id="reader-save" aria-label="Save lyrics" title="Save lyrics">
-                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.8A1.8 1.8 0 0 1 7.8 3h8.4A1.8 1.8 0 0 1 18 4.8V21l-6-3.7L6 21V4.8Z" /></svg>
-                </button>
+            </div>
+            <div class="lyrics-notice" id="lyrics-content">
+              <span class="notice-icon" aria-hidden="true">♪</span>
+              <div>
+                <h3>Lyrics are not available as text yet.</h3>
+                <p>Watch the Sound Town video above to read along. Text lyrics can be added here when provided by the rights holder or supplied with permission.</p>
+                <a id="lyrics-video-link" target="_blank" rel="noopener noreferrer">Open the lyric video on YouTube ↗</a>
               </div>
-              <div class="reader-divider"><span>✳</span></div>
-              <div class="lyrics" id="reader-lyrics"></div>
-              <div class="reader-footer">
-                <span class="original-note">Original sample lyrics</span>
-                <button class="copy-button" id="copy-lyrics">
-                  <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="13" rx="2" /><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3" /></svg>
-                  <span>Copy lyrics</span>
-                </button>
+            </div>
+          </section>
+
+          <section class="related-section" aria-labelledby="related-heading">
+            <div class="section-heading compact-heading">
+              <div>
+                <span class="eyebrow"><span class="eyebrow-line"></span> KEEP LISTENING</span>
+                <h2 id="related-heading">You might also <em>like.</em></h2>
               </div>
-            </aside>
-          </div>
-          <div class="empty-state" id="empty-state" hidden>
-            <span>✳</span>
-            <h3>No songs found just yet.</h3>
-            <p>Try another search, or explore all the songs in the collection.</p>
-            <button id="clear-filters">Clear filters</button>
-          </div>
-        </section>
-        <footer class="page-footer"><span>SOUND TOWN<span class="brand-period">.</span> &nbsp; MADE FOR THE LOVE OF LYRICS</span><span>ALL LYRICS ON THIS DEMO ARE ORIGINAL</span></footer>
-      </main>
-    </div>
+            </div>
+            <div class="song-grid related-grid" id="related-grid"></div>
+          </section>
+        </article>
+      </section>
+    </main>
+
+    <section class="feedback-band" aria-labelledby="feedback-heading">
+      <div>
+        <span class="eyebrow"><span class="eyebrow-line"></span> HELP US GET IT RIGHT</span>
+        <h2 id="feedback-heading">A song missing? <em>Tell us.</em></h2>
+        <p>Feedback and lyric submissions are coming soon. For now, reach Sound Town through the YouTube channel.</p>
+      </div>
+      <a class="feedback-link" href="https://www.youtube.com/@soundtown77" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 7.2a2.8 2.8 0 0 0-2-2C18.2 4.7 12 4.7 12 4.7s-6.2 0-8 .5a2.8 2.8 0 0 0-2 2A29 29 0 0 0 1.5 12 29 29 0 0 0 2 16.8a2.8 2.8 0 0 0 2 2c1.8.5 8 .5 8 .5s6.2 0 8-.5a2.8 2.8 0 0 0 2-2 29 29 0 0 0 .5-4.8 29 29 0 0 0-.5-4.8Z" /><path d="m10 15.5 5-3.5-5-3.5v7Z" /></svg>
+        Contact us on YouTube <span aria-hidden="true">↗</span>
+      </a>
+    </section>
+
+    <footer class="site-footer">
+      <a class="brand footer-brand" href="#" data-home>
+        <span class="brand-mark" aria-hidden="true">S</span>
+        <span class="brand-name">Sound Town<span class="brand-period">.</span></span>
+      </a>
+      <p class="copyright">© <span id="copyright-year"></span> Sound Town. All rights reserved.</p>
+      <nav class="social-links" aria-label="Social links">
+        <a class="social-link" href="https://www.youtube.com/@soundtown77" target="_blank" rel="noopener noreferrer" aria-label="Sound Town on YouTube" title="Sound Town on YouTube">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 7.2a2.8 2.8 0 0 0-2-2C18.2 4.7 12 4.7 12 4.7s-6.2 0-8 .5a2.8 2.8 0 0 0-2 2A29 29 0 0 0 1.5 12 29 29 0 0 0 2 16.8a2.8 2.8 0 0 0 2 2c1.8.5 8 .5 8 .5s6.2 0 8-.5a2.8 2.8 0 0 0 2-2 29 29 0 0 0 .5-4.8 29 29 0 0 0-.5-4.8Z" /><path d="m10 15.5 5-3.5-5-3.5v7Z" /></svg>
+        </a>
+        <span class="social-link is-pending" aria-label="TikTok profile link coming soon" title="TikTok profile link coming soon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3v11.2a4.4 4.4 0 1 1-3.2-4.2" /><path d="M14 3c.4 3.1 2.2 5 5.5 5.3" /></svg>
+        </span>
+        <span class="social-link is-pending" aria-label="Facebook profile link coming soon" title="Facebook profile link coming soon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 21v-8h3l.5-3H14V8c0-.9.3-1.5 1.6-1.5H18V3.8c-.7-.1-1.7-.2-2.8-.2-2.8 0-4.7 1.7-4.7 4.8V10H8v3h2.5v8H14Z" /></svg>
+        </span>
+      </nav>
+    </footer>
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
   </body>
 </html>

@@ -1,258 +1,275 @@
-const songs = [
-  {
-    id: "small-hours",
-    title: "Small Hours",
-    artist: "June Wilder",
-    album: "The Quiet Between",
-    genre: "Indie",
-    color: "#788363",
-    glyph: "☾",
-    lyrics: [
-      "The kitchen clock is learning how to whisper<br>While the whole wide house is fast asleep<br>I trace the shape of every little maybe<br>In the quiet that the midnight keeps",
-      "If the morning finds us different<br>Let it find us standing near<br>Somewhere in these small hours<br>I can hear the future clear",
-      "We don't need a map to find the feeling<br>We don't need a reason to begin<br>Leave a little light on in the hallway<br>I'll come home by following it in"
-    ],
-    chorusIndex: 1
-  },
-  {
-    id: "blue-window",
-    title: "Blue Window",
-    artist: "Milo & The Sunday",
-    album: "Open Rooms",
-    genre: "Soul",
-    color: "#788ca0",
-    glyph: "◉",
-    lyrics: [
-      "Rain writes little letters on the glass<br>Every one says take your time<br>And the city wears its evening slowly<br>Like a coat it doesn't mind",
-      "There's a blue window in the evening<br>Where the tired heart learns to rest<br>All the things we couldn't carry<br>Settle softly in the west",
-      "You laugh, the whole room changes color<br>Even grey has somewhere left to go<br>I keep finding reasons in the ordinary<br>Little seeds beneath the snow"
-    ],
-    chorusIndex: 1
-  },
-  {
-    id: "paper-moon",
-    title: "Paper Moon",
-    artist: "The Fern Letters",
-    album: "Somewhere, Slowly",
-    genre: "Folk",
-    color: "#b68c72",
-    glyph: "☼",
-    lyrics: [
-      "We cut a paper moon from yesterday's news<br>Hung it from a string above the stairs<br>You said even make-believe can guide you<br>If you look at it like someone cares",
-      "Under our paper moon<br>Every little road leads home<br>We can make a sky from nothing<br>We can make a place our own",
-      "When the morning pulled the dark to pieces<br>We let the silver circles fall<br>Some things only shine because we made them<br>Some things never needed stars at all"
-    ],
-    chorusIndex: 1
-  },
-  {
-    id: "soft-landing",
-    title: "Soft Landing",
-    artist: "Lena Sol",
-    album: "Ways of Returning",
-    genre: "Pop",
-    color: "#bb8f91",
-    glyph: "✳",
-    lyrics: [
-      "I took the long way past the corner store<br>Just to let the day unwind<br>The world was loud with open endings<br>So I left a few behind",
-      "Give me a soft landing<br>A little room to change my mind<br>Give me the kind of morning<br>That doesn't ask me to be fine",
-      "The sun came through in unexpected pieces<br>On the old familiar floor<br>Maybe healing isn't quite a doorway<br>Maybe it's an open door"
-    ],
-    chorusIndex: 1
-  },
-  {
-    id: "wildflower-season",
-    title: "Wildflower Season",
-    artist: "Arlo Finch",
-    album: "A Map of Almost",
-    genre: "Folk",
-    color: "#a49a69",
-    glyph: "❋",
-    lyrics: [
-      "You kept a little garden in the gravel<br>Where the old train used to turn<br>Every stubborn green and golden thing<br>Had a lesson left to learn",
-      "It's wildflower season, darling<br>Nothing has to bloom in rows<br>Take the shape the sunlight gives you<br>Find your way and let it grow",
-      "We were made of all the things we almost said<br>And every promise we outgrew<br>Still the field goes on forgiving<br>Every sky that isn't blue"
-    ],
-    chorusIndex: 1
-  },
-  {
-    id: "after-the-glow",
-    title: "After the Glow",
-    artist: "Velvet Morning",
-    album: "Rooms With the Lights On",
-    genre: "Indie",
-    color: "#9283a1",
-    glyph: "✦",
-    lyrics: [
-      "The last song drifts away between the buildings<br>And the sidewalk holds the warmth awhile<br>We stay until the room is only breathing<br>And the quiet almost looks like a smile",
-      "After the glow, after the gold<br>After the story gets quiet and old<br>I'll still be here, walking you home<br>Learning the dark by the light that we know",
-      "The night is not a thing to overcome<br>It's just a softer way to see<br>How every little light along the road<br>Was waiting there for you and me"
-    ],
-    chorusIndex: 1
-  }
-];
+const songs = Array.isArray(window.SOUNDTOWN_SONGS) ? window.SOUNDTOWN_SONGS : [];
+const stopWords = new Set(["a", "an", "and", "by", "for", "from", "in", "lyrics", "lyric", "new", "nepali", "of", "song", "songs", "the", "tiktok", "trending", "viral", "with"]);
+const searchInputs = [document.querySelector("#header-search"), document.querySelector("#hero-search")];
+const resultLists = [document.querySelector("#header-results"), document.querySelector("#hero-results")];
+const homeView = document.querySelector("#home-view");
+const songView = document.querySelector("#song-view");
+let visibleCount = 12;
 
-const savedSongs = new Set();
-let selectedGenre = "All";
-let currentSong = songs[0];
-let activeView = "discover";
-let toastTimer;
-
-const songGrid = document.querySelector("#song-grid");
-const searchInput = document.querySelector("#song-search");
-const readerCard = document.querySelector("#reader-card");
-
-function getVisibleSongs() {
-  const query = searchInput.value.trim().toLowerCase();
-  return songs.filter((song) => {
-    const matchesGenre = selectedGenre === "All" || song.genre === selectedGenre;
-    const matchesQuery = !query || [song.title, song.artist, song.album, song.genre].some((value) => value.toLowerCase().includes(query));
-    const matchesView = activeView !== "saved" || savedSongs.has(song.id);
-    return matchesGenre && matchesQuery && matchesView;
-  });
+function escapeHtml(value) {
+  return String(value).replace(/[&<>"']/g, (character) => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
+  })[character]);
 }
 
-function renderSongs() {
-  const visibleSongs = getVisibleSongs();
-  songGrid.innerHTML = visibleSongs.map((song) => `
-    <article class="song-card${song.id === currentSong.id ? " is-current" : ""}" data-song-id="${song.id}" tabindex="0" role="button" aria-label="Read ${song.title} by ${song.artist}">
-      <div class="card-cover" style="background:${song.color}">
-        <span class="cover-glyph" aria-hidden="true">${song.glyph}</span>
-        <span class="card-number">${String(songs.indexOf(song) + 1).padStart(2, "0")}</span>
-        <button class="card-save${savedSongs.has(song.id) ? " is-saved" : ""}" data-save-id="${song.id}" aria-label="${savedSongs.has(song.id) ? "Remove" : "Save"} ${song.title}" title="${savedSongs.has(song.id) ? "Remove from saved" : "Save lyrics"}">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.8A1.8 1.8 0 0 1 7.8 3h8.4A1.8 1.8 0 0 1 18 4.8V21l-6-3.7L6 21V4.8Z" /></svg>
-        </button>
-      </div>
-      <div class="card-info">
-        <span class="card-genre">${song.genre} · ORIGINAL</span>
-        <h3>${song.title}</h3>
-        <p>${song.artist} <span>·</span> ${song.album}</p>
-      </div>
-    </article>
-  `).join("");
-  document.querySelector("#song-total").textContent = `${String(visibleSongs.length).padStart(2, "0")} SONG${visibleSongs.length === 1 ? "" : "S"}`;
-  document.querySelector("#empty-state").hidden = visibleSongs.length > 0;
-  songGrid.hidden = visibleSongs.length === 0;
+function normalize(value) {
+  return value
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/([a-z])([A-Z])/g, "$1 $2")
+    .toLowerCase()
+    .replace(/[^a-z0-9\u0900-\u097f]+/g, " ")
+    .trim();
 }
 
-function renderReader(song) {
-  currentSong = song;
-  document.querySelector("#reader-title").textContent = song.title;
-  document.querySelector("#reader-artist").innerHTML = `${song.artist} <span>·</span> <span id="reader-album">${song.album}</span>`;
-  document.querySelector("#reader-cover").style.background = song.color;
-  document.querySelector("#cover-glyph").textContent = song.glyph;
-  document.querySelector("#cover-index").textContent = `NO. ${String(songs.indexOf(song) + 1).padStart(2, "0")}`;
-  document.querySelector("#reader-lyrics").innerHTML = song.lyrics.map((verse, index) =>
-    `<p${index === song.chorusIndex ? ' class="chorus"' : ""}>${verse.replace(/\n/g, "<br>")}</p>`
-  ).join("");
-  const saveButton = document.querySelector("#reader-save");
-  saveButton.classList.toggle("is-saved", savedSongs.has(song.id));
-  saveButton.setAttribute("aria-label", `${savedSongs.has(song.id) ? "Remove" : "Save"} lyrics`);
-  renderSongs();
+function words(value) {
+  return normalize(value).split(/\s+/).filter((word) => word && !stopWords.has(word));
 }
 
-function updateSavedCount() {
-  document.querySelector("#saved-count").textContent = savedSongs.size;
-}
-
-function showToast(message) {
-  const toast = document.querySelector("#toast");
-  toast.textContent = message;
-  toast.classList.add("is-visible");
-  window.clearTimeout(toastTimer);
-  toastTimer = window.setTimeout(() => toast.classList.remove("is-visible"), 2200);
-}
-
-function toggleSaved(songId) {
-  const song = songs.find((item) => item.id === songId);
-  if (!song) return;
-  if (savedSongs.has(songId)) {
-    savedSongs.delete(songId);
-    showToast(`Removed “${song.title}” from your saved lyrics`);
-  } else {
-    savedSongs.add(songId);
-    showToast(`“${song.title}” saved for later`);
-  }
-  updateSavedCount();
-  renderSongs();
-  if (currentSong.id === songId) {
-    document.querySelector("#reader-save").classList.toggle("is-saved", savedSongs.has(songId));
-  }
-}
-
-songGrid.addEventListener("click", (event) => {
-  const saveButton = event.target.closest("[data-save-id]");
-  if (saveButton) {
-    event.stopPropagation();
-    toggleSaved(saveButton.dataset.saveId);
-    return;
-  }
-  const card = event.target.closest("[data-song-id]");
-  if (!card) return;
-  const song = songs.find((item) => item.id === card.dataset.songId);
-  if (song) {
-    renderReader(song);
-    readerCard.classList.add("is-open");
-  }
-});
-
-songGrid.addEventListener("keydown", (event) => {
-  if ((event.key === "Enter" || event.key === " ") && event.target.matches("[data-song-id]")) {
-    event.preventDefault();
-    const song = songs.find((item) => item.id === event.target.dataset.songId);
-    if (song) {
-      renderReader(song);
-      readerCard.classList.add("is-open");
+function editDistance(left, right) {
+  const row = Array.from({ length: right.length + 1 }, (_, index) => index);
+  for (let i = 1; i <= left.length; i += 1) {
+    let diagonal = row[0];
+    row[0] = i;
+    for (let j = 1; j <= right.length; j += 1) {
+      const previous = row[j];
+      row[j] = Math.min(row[j] + 1, row[j - 1] + 1, diagonal + (left[i - 1] === right[j - 1] ? 0 : 1));
+      diagonal = previous;
     }
   }
+  return row[right.length];
+}
+
+function matchWord(queryWord, titleWord) {
+  if (queryWord === titleWord) return 1;
+  if (queryWord.length >= 3 && (titleWord.startsWith(queryWord) || queryWord.startsWith(titleWord))) return 0.85;
+  const threshold = queryWord.length > 6 ? 2 : 1;
+  return editDistance(queryWord, titleWord) <= threshold ? 0.65 : 0;
+}
+
+function scoreSong(song, query) {
+  const normalizedQuery = normalize(query);
+  const normalizedTitle = normalize(song.title);
+  if (normalizedTitle.includes(normalizedQuery)) return 100;
+
+  const queryWords = words(query);
+  const titleWords = words(song.title);
+  if (!queryWords.length || !titleWords.length) return 0;
+
+  const score = queryWords.reduce((total, queryWord) => {
+    const bestMatch = Math.max(0, ...titleWords.map((titleWord) => matchWord(queryWord, titleWord)));
+    return total + bestMatch;
+  }, 0);
+  return score / queryWords.length;
+}
+
+function searchSongs(query) {
+  if (!query.trim()) return [];
+  return songs
+    .map((song) => ({ song, score: scoreSong(song, query) }))
+    .filter((result) => result.score >= 0.48)
+    .sort((left, right) => right.score - left.score || left.song.title.localeCompare(right.song.title));
+}
+
+function songName(song) {
+  return song.title.split("|")[0].trim() || song.title;
+}
+
+function songUrl(song) {
+  return `https://www.youtube.com/watch?v=${encodeURIComponent(song.id)}`;
+}
+
+function renderSongCard(song, index = 0) {
+  const title = songName(song);
+  const thumbnail = `https://i.ytimg.com/vi/${encodeURIComponent(song.id)}/hqdefault.jpg`;
+  return `
+    <button class="song-card" type="button" data-song-id="${escapeHtml(song.id)}">
+      <span class="card-thumbnail">
+        <img src="${thumbnail}" alt="" loading="lazy" />
+        <span class="play-mark" aria-hidden="true">▶</span>
+        <span class="card-index">${String(index + 1).padStart(2, "0")}</span>
+      </span>
+      <span class="card-title">${escapeHtml(title)}</span>
+      <span class="card-subtitle">${escapeHtml(song.title)}</span>
+    </button>`;
+}
+
+function renderCatalog() {
+  const grid = document.querySelector("#catalog-grid");
+  const recentSongs = songs.slice(0, visibleCount);
+  grid.innerHTML = recentSongs.map((song, index) => renderSongCard(song, index)).join("");
+  document.querySelector("#catalog-count").textContent = `${songs.length} VIDEOS`;
+
+  let moreButton = document.querySelector("#show-more");
+  if (recentSongs.length < songs.length) {
+    if (!moreButton) {
+      moreButton = document.createElement("button");
+      moreButton.id = "show-more";
+      moreButton.className = "show-more";
+      moreButton.type = "button";
+      moreButton.textContent = "Show more songs";
+      grid.after(moreButton);
+      moreButton.addEventListener("click", () => {
+        visibleCount = Math.min(visibleCount + 12, songs.length);
+        renderCatalog();
+      });
+    }
+    moreButton.hidden = false;
+  } else if (moreButton) {
+    moreButton.hidden = true;
+  }
+}
+
+function renderResults(query, list) {
+  if (!query.trim()) {
+    list.hidden = true;
+    list.innerHTML = "";
+    return;
+  }
+  const matches = searchSongs(query).slice(0, 7);
+  const items = matches.map(({ song }) => `
+    <button class="search-result" type="button" role="option" data-song-id="${escapeHtml(song.id)}">
+      <img src="https://i.ytimg.com/vi/${encodeURIComponent(song.id)}/default.jpg" alt="" />
+      <span><strong>${escapeHtml(songName(song))}</strong><small>${escapeHtml(song.title)}</small></span>
+      <span class="result-arrow" aria-hidden="true">↗</span>
+    </button>`).join("");
+  const fallback = `
+    <a class="search-fallback" href="https://www.youtube.com/@soundtown77/search?query=${encodeURIComponent(query)}" target="_blank" rel="noopener noreferrer">
+      Search all Sound Town videos on YouTube <span aria-hidden="true">↗</span>
+    </a>`;
+  list.innerHTML = `${items || `<p class="no-results">No close match in the indexed videos.</p>`}${fallback}`;
+  list.hidden = false;
+}
+
+function renderLyrics(song) {
+  const content = document.querySelector("#lyrics-content");
+  if (!song.lyrics) {
+    content.innerHTML = `
+      <span class="notice-icon" aria-hidden="true">♪</span>
+      <div>
+        <h3>Lyrics are not available as text yet.</h3>
+        <p>Watch the Sound Town video above to read along. Text lyrics can be added here when provided by the rights holder or supplied with permission.</p>
+        <a id="lyrics-video-link" href="${songUrl(song)}" target="_blank" rel="noopener noreferrer">Open the lyric video on YouTube ↗</a>
+      </div>`;
+    return;
+  }
+  content.innerHTML = `<div class="licensed-lyrics">${escapeHtml(song.lyrics).replace(/\n/g, "<br>")}</div>`;
+}
+
+function renderRelated(song) {
+  const related = songs
+    .filter((candidate) => candidate.id !== song.id)
+    .map((candidate) => ({ song: candidate, score: scoreSong(candidate, songName(song)) }))
+    .sort((left, right) => right.score - left.score)
+    .slice(0, 4)
+    .map((result) => result.song);
+  document.querySelector("#related-grid").innerHTML = related.map((item, index) => renderSongCard(item, index)).join("");
+}
+
+function openSong(song, updateHash = true) {
+  if (!song || !/^[A-Za-z0-9_-]{11}$/.test(song.id)) return;
+  const title = songName(song);
+  homeView.hidden = true;
+  songView.hidden = false;
+  document.querySelector("#song-title").textContent = `${title} Lyrics`;
+  document.querySelector("#song-byline").textContent = song.title;
+  document.querySelector("#breadcrumb-title").textContent = `${title} lyrics`;
+  document.querySelector("#lyrics-song-title").textContent = `${title} lyrics`;
+  document.querySelector("#song-video").src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(song.id)}?rel=0`;
+  const videoLink = songUrl(song);
+  document.querySelector("#watch-youtube").href = videoLink;
+  document.querySelector("#lyrics-video-link").href = videoLink;
+  renderLyrics(song);
+  renderRelated(song);
+  document.title = `${title} lyrics | Sound Town`;
+  document.querySelector('meta[property="og:title"]').content = document.title;
+  if (updateHash) {
+    window.history.pushState({ songId: song.id }, "", `#song=${encodeURIComponent(song.id)}`);
+  }
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function returnHome(updateHash = true) {
+  songView.hidden = true;
+  homeView.hidden = false;
+  document.querySelector("#song-video").src = "";
+  document.title = "Sound Town — Song Lyrics";
+  document.querySelector('meta[property="og:title"]').content = document.title;
+  if (updateHash) window.history.pushState({}, "", window.location.pathname);
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function handleSearchSubmit(event, input) {
+  event.preventDefault();
+  const matches = searchSongs(input.value);
+  if (matches.length) {
+    openSong(matches[0].song);
+    resultLists.forEach((list) => { list.hidden = true; });
+  } else if (input.value.trim()) {
+    window.open(`https://www.youtube.com/@soundtown77/search?query=${encodeURIComponent(input.value.trim())}`, "_blank", "noopener");
+  }
+}
+
+searchInputs.forEach((input, index) => {
+  input.addEventListener("input", () => {
+    const query = input.value;
+    searchInputs.forEach((otherInput) => {
+      if (otherInput !== input) otherInput.value = query;
+    });
+    resultLists.forEach((list) => renderResults(query, list));
+  });
+  input.addEventListener("focus", () => {
+    if (input.value.trim()) renderResults(input.value, resultLists[index]);
+  });
+  input.form.addEventListener("submit", (event) => handleSearchSubmit(event, input));
 });
 
-document.querySelectorAll(".filter-chip").forEach((button) => {
+document.addEventListener("click", (event) => {
+  const songButton = event.target.closest("[data-song-id]");
+  if (songButton) {
+    const song = songs.find((item) => item.id === songButton.dataset.songId);
+    if (song) openSong(song);
+    resultLists.forEach((list) => { list.hidden = true; });
+  }
+  if (!event.target.closest(".search-form")) {
+    resultLists.forEach((list) => { list.hidden = true; });
+  }
+  if (event.target.closest("[data-home]") || event.target.closest("#home-link")) {
+    event.preventDefault();
+    returnHome();
+  }
+});
+
+document.querySelectorAll("[data-query]").forEach((button) => {
   button.addEventListener("click", () => {
-    selectedGenre = button.dataset.genre;
-    document.querySelectorAll(".filter-chip").forEach((chip) => chip.classList.toggle("is-selected", chip === button));
-    renderSongs();
+    const heroSearch = document.querySelector("#hero-search");
+    heroSearch.value = button.dataset.query;
+    renderResults(button.dataset.query, document.querySelector("#hero-results"));
+    heroSearch.focus();
   });
 });
 
-searchInput.addEventListener("input", renderSongs);
-document.querySelector("#clear-filters").addEventListener("click", () => {
-  searchInput.value = "";
-  selectedGenre = "All";
-  activeView = "discover";
-  document.querySelectorAll(".filter-chip").forEach((chip) => chip.classList.toggle("is-selected", chip.dataset.genre === "All"));
-  setActiveView("discover");
-  renderSongs();
-});
-
-function setActiveView(view) {
-  activeView = view;
-  document.querySelectorAll(".nav-item").forEach((item) => item.classList.toggle("is-active", item.dataset.view === view));
-  document.querySelector("#page-label").textContent = view === "saved" ? "Saved lyrics" : "Discover";
-  document.querySelector("#library-heading").innerHTML = view === "saved" ? "Your saved <em>words.</em>" : "Words worth <em>keeping.</em>";
-  renderSongs();
-}
-
-document.querySelectorAll(".nav-item").forEach((button) => button.addEventListener("click", () => setActiveView(button.dataset.view)));
-document.querySelector("#reader-save").addEventListener("click", () => toggleSaved(currentSong.id));
-document.querySelector("#close-reader").addEventListener("click", () => readerCard.classList.remove("is-open"));
-document.querySelector("#copy-lyrics").addEventListener("click", async () => {
-  const text = `${currentSong.title} — ${currentSong.artist}\n\n${currentSong.lyrics.join("\n\n").replace(/<br>/g, "\n")}`;
-  try {
-    await navigator.clipboard.writeText(text);
-    showToast("Lyrics copied to your clipboard");
-  } catch {
-    showToast("Clipboard access isn't available in this browser");
-  }
-});
 document.addEventListener("keydown", (event) => {
   if (event.key === "/" && !["INPUT", "TEXTAREA"].includes(document.activeElement.tagName)) {
     event.preventDefault();
-    searchInput.focus();
+    document.querySelector(homeView.hidden ? "#header-search" : "#hero-search").focus();
   }
-  if (event.key === "Escape") readerCard.classList.remove("is-open");
+  if (event.key === "Escape") resultLists.forEach((list) => { list.hidden = true; });
 });
 
-const dateFormatter = new Intl.DateTimeFormat("en", { weekday: "short", month: "short", day: "numeric" });
-document.querySelector("#today-date").textContent = dateFormatter.format(new Date()).toUpperCase();
-renderReader(currentSong);
-updateSavedCount();
+function restoreRoute() {
+  const match = window.location.hash.match(/^#song=([A-Za-z0-9_-]{11})$/);
+  const song = match ? songs.find((item) => item.id === match[1]) : null;
+  if (song) openSong(song, false);
+  else returnHome(false);
+}
+
+window.addEventListener("popstate", restoreRoute);
+window.addEventListener("hashchange", restoreRoute);
+document.querySelector("#copyright-year").textContent = new Date().getFullYear();
+renderCatalog();
+restoreRoute();
