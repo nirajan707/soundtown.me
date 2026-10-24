@@ -415,7 +415,8 @@ function setHomeSeo() {
 function openSong(song, updateUrl = true) {
   if (!song || !/^[A-Za-z0-9_-]{11}$/.test(song.id)) return;
   const title = songName(song);
-  activeLyricsLanguage = "romanized";
+  const versions = lyricVersions(song);
+  activeLyricsLanguage = versions.generatedLanguage === "romanized" ? "devanagari" : "romanized";
   homeView.hidden = true;
   songView.hidden = false;
   document.querySelector("#song-title").textContent = `${title} Lyrics`;
