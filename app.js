@@ -233,7 +233,7 @@ function songPageUrl(song) {
   return url.href;
 }
 
-function renderSongCard(song, index = 0) {
+function renderSongCard(song) {
   const title = songName(song);
   const thumbnail = `https://i.ytimg.com/vi/${encodeURIComponent(song.id)}/hqdefault.jpg`;
   return `
@@ -241,7 +241,6 @@ function renderSongCard(song, index = 0) {
       <span class="card-thumbnail">
         <img src="${thumbnail}" alt="" loading="lazy" />
         <span class="play-mark" aria-hidden="true">▶</span>
-        <span class="card-index">${String(index + 1).padStart(2, "0")}</span>
       </span>
       <span class="card-title">${escapeHtml(title)}</span>
       <span class="card-subtitle">${escapeHtml(song.title)}</span>
@@ -251,7 +250,7 @@ function renderSongCard(song, index = 0) {
 function renderCatalog() {
   const grid = document.querySelector("#catalog-grid");
   const recentSongs = songs.slice(0, visibleCount);
-  grid.innerHTML = recentSongs.map((song, index) => renderSongCard(song, index)).join("");
+  grid.innerHTML = recentSongs.map((song) => renderSongCard(song)).join("");
   document.querySelector("#catalog-count").textContent = `${songs.length} VIDEOS`;
 
   let moreButton = document.querySelector("#show-more");
@@ -351,7 +350,7 @@ function renderRelated(song) {
     .sort((left, right) => right.score - left.score)
     .slice(0, 4)
     .map((result) => result.song);
-  document.querySelector("#related-grid").innerHTML = related.map((item, index) => renderSongCard(item, index)).join("");
+  document.querySelector("#related-grid").innerHTML = related.map((item) => renderSongCard(item)).join("");
 }
 
 function setMeta(selector, attribute, value) {
