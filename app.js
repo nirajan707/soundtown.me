@@ -4,9 +4,12 @@ const searchInputs = [document.querySelector("#header-search"), document.querySe
 const resultLists = [document.querySelector("#header-results"), document.querySelector("#hero-results")];
 const homeView = document.querySelector("#home-view");
 const songView = document.querySelector("#song-view");
+const siteHomeUrl = new URL("/", document.querySelector('link[rel="canonical"]').href);
 let visibleCount = 12;
 let activeLyricsLanguage = "romanized";
 let currentSong = null;
+const homeTitle = "Nepali Song Lyrics, Artists & Videos | Sound Town";
+const homeDescription = "Search Nepali songs by title, artist, or lyrics, and watch official Sound Town music videos.";
 
 function escapeHtml(value) {
   return String(value).replace(/[&<>"']/g, (character) => ({
@@ -32,6 +35,15 @@ function words(value) {
   return normalize(value).split(/\s+/).filter((word) => word && !stopWords.has(word));
 }
 
+function searchableText(song) {
+  const lyricLines = Object.values(song.lyrics || {}).flatMap((language) =>
+    Array.isArray(language) ? language.flatMap((verse) => verse.lines || []) : []
+  );
+  const tags = Array.isArray(song.tags) ? song.tags : [];
+  const keywords = Array.isArray(song.keywords) ? song.keywords : [];
+  return [song.title, song.artist, ...tags, ...keywords, ...lyricLines].filter(Boolean).join(" ");
+}
+
 function editDistance(left, right) {
   const row = Array.from({ length: right.length + 1 }, (_, index) => index);
   for (let i = 1; i <= left.length; i += 1) {
@@ -55,15 +67,15 @@ function matchWord(queryWord, titleWord) {
 
 function scoreSong(song, query) {
   const normalizedQuery = normalize(query);
-  const normalizedTitle = normalize(song.title);
-  if (normalizedTitle.includes(normalizedQuery)) return 100;
+  const normalizedSearchText = normalize(searchableText(song));
+  if (normalizedSearchText.includes(normalizedQuery)) return 100;
 
   const queryWords = words(query);
-  const titleWords = words(song.title);
-  if (!queryWords.length || !titleWords.length) return 0;
+  const searchWords = words(searchableText(song));
+  if (!queryWords.length || !searchWords.length) return 0;
 
   const score = queryWords.reduce((total, queryWord) => {
-    const bestMatch = Math.max(0, ...titleWords.map((titleWord) => matchWord(queryWord, titleWord)));
+    const bestMatch = Math.max(0, ...searchWords.map((searchWord) => matchWord(queryWord, searchWord)));
     return total + bestMatch;
   }, 0);
   return score / queryWords.length;
@@ -85,11 +97,17 @@ function songUrl(song) {
   return `https://www.youtube.com/watch?v=${encodeURIComponent(song.id)}`;
 }
 
+function songPageUrl(song) {
+  const url = new URL(siteHomeUrl);
+  url.searchParams.set("song", song.id);
+  return url.href;
+}
+
 function renderSongCard(song, index = 0) {
   const title = songName(song);
   const thumbnail = `https://i.ytimg.com/vi/${encodeURIComponent(song.id)}/hqdefault.jpg`;
   return `
-    <button class="song-card" type="button" data-song-id="${escapeHtml(song.id)}">
+    <a class="song-card" href="${escapeHtml(songPageUrl(song))}" data-song-id="${escapeHtml(song.id)}">
       <span class="card-thumbnail">
         <img src="${thumbnail}" alt="" loading="lazy" />
         <span class="play-mark" aria-hidden="true">▶</span>
@@ -97,7 +115,7 @@ function renderSongCard(song, index = 0) {
       </span>
       <span class="card-title">${escapeHtml(title)}</span>
       <span class="card-subtitle">${escapeHtml(song.title)}</span>
-    </button>`;
+    </a>`;
 }
 
 function renderCatalog() {
@@ -134,11 +152,11 @@ function renderResults(query, list) {
   }
   const matches = searchSongs(query).slice(0, 7);
   const items = matches.map(({ song }) => `
-    <button class="search-result" type="button" role="option" data-song-id="${escapeHtml(song.id)}">
+    <a class="search-result" href="${escapeHtml(songPageUrl(song))}" role="option" data-song-id="${escapeHtml(song.id)}">
       <img src="https://i.ytimg.com/vi/${encodeURIComponent(song.id)}/default.jpg" alt="" />
       <span><strong>${escapeHtml(songName(song))}</strong><small>${escapeHtml(song.title)}</small></span>
       <span class="result-arrow" aria-hidden="true">↗</span>
-    </button>`).join("");
+    </a>`).join("");
   const fallback = `
     <a class="search-fallback" href="https://www.youtube.com/@soundtown77/search?query=${encodeURIComponent(query)}" target="_blank" rel="noopener noreferrer">
       Search all Sound Town videos on YouTube <span aria-hidden="true">↗</span>
@@ -197,7 +215,65 @@ function renderRelated(song) {
   document.querySelector("#related-grid").innerHTML = related.map((item, index) => renderSongCard(item, index)).join("");
 }
 
-function openSong(song, updateHash = true) {
+function setMeta(selector, attribute, value) {
+  const element = document.querySelector(selector);
+  if (element) element.setAttribute(attribute, value);
+}
+
+function setSongSeo(song) {
+  const title = `${songName(song)} lyrics | Sound Town`;
+  const description = `${song.title}. ${song.lyrics ? "Read the romanized Nepali lyrics" : "Find song details and lyrics information"} and watch the official video on Sound Town.`;
+  const keywords = [...new Set(words(searchableText(song)))].slice(0, 30).join(", ");
+  const pageUrl = songPageUrl(song);
+  document.title = title;
+  setMeta('meta[name="description"]', "content", description.slice(0, 160));
+  setMeta('meta[name="keywords"]', "content", keywords);
+  setMeta('meta[property="og:type"]', "content", "video.other");
+  setMeta('meta[property="og:title"]', "content", title);
+  setMeta('meta[property="og:description"]', "content", description.slice(0, 160));
+  setMeta('meta[property="og:url"]', "content", pageUrl);
+  setMeta('meta[property="og:image"]', "content", `https://i.ytimg.com/vi/${encodeURIComponent(song.id)}/hqdefault.jpg`);
+  setMeta('meta[name="twitter:title"]', "content", title);
+  setMeta('meta[name="twitter:description"]', "content", description.slice(0, 160));
+  setMeta('meta[name="twitter:image"]', "content", `https://i.ytimg.com/vi/${encodeURIComponent(song.id)}/hqdefault.jpg`);
+  setMeta('link[rel="canonical"]', "href", pageUrl);
+
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    name: song.title,
+    description: description.slice(0, 160),
+    thumbnailUrl: [`https://i.ytimg.com/vi/${encodeURIComponent(song.id)}/hqdefault.jpg`],
+    embedUrl: `https://www.youtube-nocookie.com/embed/${encodeURIComponent(song.id)}`,
+    contentUrl: songUrl(song),
+    url: pageUrl,
+    publisher: {
+      "@type": "Organization",
+      name: "Sound Town",
+      url: siteHomeUrl.href
+    },
+    inLanguage: "ne"
+  };
+  document.querySelector("#song-schema").textContent = JSON.stringify(schema);
+}
+
+function setHomeSeo() {
+  document.title = homeTitle;
+  setMeta('meta[name="description"]', "content", homeDescription);
+  setMeta('meta[name="keywords"]', "content", "Nepali song lyrics, Nepali songs, song lyrics, Sound Town, Nepali music videos");
+  setMeta('meta[property="og:type"]', "content", "website");
+  setMeta('meta[property="og:title"]', "content", homeTitle);
+  setMeta('meta[property="og:description"]', "content", homeDescription);
+  setMeta('meta[property="og:url"]', "content", siteHomeUrl.href);
+  setMeta('meta[property="og:image"]', "content", `${siteHomeUrl.href}soundtown-logo.jpg`);
+  setMeta('meta[name="twitter:title"]', "content", homeTitle);
+  setMeta('meta[name="twitter:description"]', "content", homeDescription);
+  setMeta('meta[name="twitter:image"]', "content", `${siteHomeUrl.href}soundtown-logo.jpg`);
+  setMeta('link[rel="canonical"]', "href", siteHomeUrl.href);
+  document.querySelector("#song-schema").textContent = "";
+}
+
+function openSong(song, updateUrl = true) {
   if (!song || !/^[A-Za-z0-9_-]{11}$/.test(song.id)) return;
   const title = songName(song);
   activeLyricsLanguage = "romanized";
@@ -212,21 +288,19 @@ function openSong(song, updateHash = true) {
   document.querySelector("#watch-youtube").href = videoLink;
   renderLyrics(song);
   renderRelated(song);
-  document.title = `${title} lyrics | Sound Town`;
-  document.querySelector('meta[property="og:title"]').content = document.title;
-  if (updateHash) {
-    window.history.pushState({ songId: song.id }, "", `#song=${encodeURIComponent(song.id)}`);
+  setSongSeo(song);
+  if (updateUrl) {
+    window.history.pushState({ songId: song.id }, "", songPageUrl(song));
   }
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-function returnHome(updateHash = true) {
+function returnHome(updateUrl = true) {
   songView.hidden = true;
   homeView.hidden = false;
   document.querySelector("#song-video").src = "";
-  document.title = "Sound Town — Song Lyrics";
-  document.querySelector('meta[property="og:title"]').content = document.title;
-  if (updateHash) window.history.pushState({}, "", window.location.pathname);
+  setHomeSeo();
+  if (updateUrl) window.history.pushState({}, "", window.location.pathname);
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
@@ -266,6 +340,7 @@ document.querySelectorAll(".language-option").forEach((button) => {
 document.addEventListener("click", (event) => {
   const songButton = event.target.closest("[data-song-id]");
   if (songButton) {
+    event.preventDefault();
     const song = songs.find((item) => item.id === songButton.dataset.songId);
     if (song) openSong(song);
     resultLists.forEach((list) => { list.hidden = true; });
@@ -297,10 +372,19 @@ document.addEventListener("keydown", (event) => {
 });
 
 function restoreRoute() {
-  const match = window.location.hash.match(/^#song=([A-Za-z0-9_-]{11})$/);
-  const song = match ? songs.find((item) => item.id === match[1]) : null;
+  const querySongId = new URLSearchParams(window.location.search).get("song");
+  const legacyMatch = window.location.hash.match(/^#song=([A-Za-z0-9_-]{11})$/);
+  const songId = querySongId || (legacyMatch && legacyMatch[1]);
+  const song = songId ? songs.find((item) => item.id === songId) : null;
   if (song) openSong(song, false);
-  else returnHome(false);
+  else {
+    returnHome(false);
+    const query = new URLSearchParams(window.location.search).get("q");
+    if (query) {
+      searchInputs.forEach((input) => { input.value = query; });
+      resultLists.forEach((list) => renderResults(query, list));
+    }
+  }
 }
 
 window.addEventListener("popstate", restoreRoute);
