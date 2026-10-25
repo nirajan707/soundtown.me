@@ -220,7 +220,7 @@ function searchSongs(query) {
 }
 
 function songName(song) {
-  return song.title.split("|")[0].trim() || song.title;
+  return song.displayTitle || song.title.split("|")[0].trim() || song.title;
 }
 
 function songUrl(song) {
@@ -243,7 +243,7 @@ function renderSongCard(song) {
         <span class="play-mark" aria-hidden="true">▶</span>
       </span>
       <span class="card-title">${escapeHtml(title)}</span>
-      <span class="card-subtitle">${escapeHtml(song.title)}</span>
+      <span class="card-subtitle">${escapeHtml(song.artist || song.title)}</span>
     </a>`;
 }
 
@@ -309,8 +309,8 @@ function renderLyrics(song) {
       <span class="notice-icon" aria-hidden="true">♪</span>
       <div>
         <h3>Lyrics are not available as text yet.</h3>
-        <p>Watch the Sound Town video above to read along. Text lyrics can be added here when provided by the rights holder or supplied with permission.</p>
-        <a id="lyrics-video-link" href="${songUrl(song)}" target="_blank" rel="noopener noreferrer">Open the lyric video on YouTube ↗</a>
+        <p>Watch the official video above to read along. Text lyrics can be added here when provided by the rights holder or supplied with permission.</p>
+        <a id="lyrics-video-link" href="${songUrl(song)}" target="_blank" rel="noopener noreferrer">Open the official video on YouTube ↗</a>
       </div>`;
     return;
   }
@@ -343,6 +343,26 @@ function renderLyrics(song) {
   });
 }
 
+function renderSongDetails(song) {
+  const section = document.querySelector("#song-details-section");
+  const details = song.details;
+  section.hidden = !details;
+  if (!details) return;
+
+  document.querySelector("#details-song-title").textContent = songName(song);
+  [
+    ["singers", "detail-singers"],
+    ["composer", "detail-composer"],
+    ["lyricists", "detail-lyricists"]
+  ].forEach(([key, id]) => {
+    const value = details[key];
+    const row = document.querySelector(`#detail-${key}-row`);
+    row.hidden = !value;
+    if (value) document.querySelector(`#${id}`).textContent = value;
+  });
+  document.querySelector("#song-details-description").textContent = details.description || "";
+}
+
 function renderRelated(song) {
   const related = songs
     .filter((candidate) => candidate.id !== song.id)
@@ -359,9 +379,15 @@ function setMeta(selector, attribute, value) {
 }
 
 function setSongSeo(song) {
-  const title = `${songName(song)} lyrics | Sound Town`;
-  const description = `${song.title}. ${song.lyrics ? "Read the romanized Nepali lyrics" : "Find song details and lyrics information"} and watch the official video on Sound Town.`;
-  const keywords = [...new Set(words(searchableText(song)))].slice(0, 30).join(", ");
+  const seo = song.seo || {};
+  const title = seo.title || `${songName(song)} lyrics | Sound Town`;
+  const description = seo.description || `${song.title}. ${song.lyrics ? "Read the romanized Nepali lyrics" : "Find song details and lyrics information"} and watch the official video on Sound Town.`;
+  const keywords = [...new Set([
+    ...(seo.keywords || []),
+    ...(song.tags || []),
+    ...(song.keywords || []),
+    ...words(searchableText(song))
+  ])].slice(0, 30).join(", ");
   const pageUrl = songPageUrl(song);
   document.title = title;
   setMeta('meta[name="description"]', "content", description.slice(0, 160));
@@ -385,12 +411,13 @@ function setSongSeo(song) {
     embedUrl: `https://www.youtube-nocookie.com/embed/${encodeURIComponent(song.id)}`,
     contentUrl: songUrl(song),
     url: pageUrl,
+    keywords,
+    inLanguage: song.languages || ["ne"],
     publisher: {
       "@type": "Organization",
-      name: "Sound Town",
-      url: siteHomeUrl.href
-    },
-    inLanguage: "ne"
+      name: song.publisher || "Sound Town",
+      url: song.publisherUrl || siteHomeUrl.href
+    }
   };
   document.querySelector("#song-schema").textContent = JSON.stringify(schema);
 }
@@ -419,12 +446,14 @@ function openSong(song, updateUrl = true) {
   homeView.hidden = true;
   songView.hidden = false;
   document.querySelector("#song-title").textContent = `${title} Lyrics`;
-  document.querySelector("#song-byline").textContent = song.title;
+  document.querySelector("#song-byline").textContent = song.artist || song.title;
   document.querySelector("#breadcrumb-title").textContent = `${title} lyrics`;
   document.querySelector("#lyrics-song-title").textContent = `${title} lyrics`;
+  document.querySelector("#song-video").title = `${title} official music video`;
   document.querySelector("#song-video").src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(song.id)}?rel=0`;
   const videoLink = songUrl(song);
   document.querySelector("#watch-youtube").href = videoLink;
+  renderSongDetails(song);
   renderLyrics(song);
   renderRelated(song);
   setSongSeo(song);

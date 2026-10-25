@@ -38,8 +38,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css?v=20261024-lyrics-guidance" />
-    <script src="songs.js?v=20261024-auto-transliteration" defer></script>
-    <script src="app.js?v=20261024-no-video-count" defer></script>
+    <script src="songs.js?v=20261025-long-way-from-home" defer></script>
+    <script src="app.js?v=20261025-song-seo" defer></script>
   </head>
   <body>
     <header class="site-header">
@@ -106,8 +106,8 @@
           <section class="video-section" aria-labelledby="video-heading">
             <div class="section-heading compact-heading">
               <div>
-                <span class="eyebrow"><span class="eyebrow-line"></span> OFFICIAL CHANNEL VIDEO</span>
-                <h2 id="video-heading">Watch on <em>Sound Town.</em></h2>
+                <span class="eyebrow"><span class="eyebrow-line"></span> OFFICIAL VIDEO</span>
+                <h2 id="video-heading">Watch the <em>official video.</em></h2>
               </div>
               <a class="text-link" id="watch-youtube" target="_blank" rel="noopener noreferrer">Open on YouTube ↗</a>
             </div>
@@ -116,12 +116,27 @@
             </div>
           </section>
 
+          <section class="song-details-section" id="song-details-section" aria-labelledby="song-details-heading" hidden>
+            <div class="section-heading compact-heading">
+              <div>
+                <span class="eyebrow"><span class="eyebrow-line"></span> SONG DETAILS</span>
+                <h2 id="song-details-heading"><em id="details-song-title">Song</em></h2>
+              </div>
+            </div>
+            <dl class="song-details-list">
+              <div id="detail-singers-row" hidden><dt>Sung by</dt><dd id="detail-singers"></dd></div>
+              <div id="detail-composer-row" hidden><dt>Composed by</dt><dd id="detail-composer"></dd></div>
+              <div id="detail-lyricists-row" hidden><dt>Lyrics by</dt><dd id="detail-lyricists"></dd></div>
+            </dl>
+            <p id="song-details-description"></p>
+          </section>
+
           <section class="lyrics-section" aria-labelledby="lyrics-heading">
             <div class="section-heading compact-heading">
               <div>
                 <span class="eyebrow"><span class="eyebrow-line"></span> THE WORDS</span>
                 <h2 id="lyrics-heading">LYRICS: <em id="lyrics-song-title">Song title</em></h2>
-                <p class="lyrics-guidance">Watch the lyrical video above for accurate lyrics.</p>
+                <p class="lyrics-guidance">Watch the official video above for accurate lyrics.</p>
               </div>
               <div class="language-toggle" id="language-toggle" role="group" aria-label="Lyrics script" hidden>
                 <button type="button" class="language-option is-active" data-language="romanized" aria-pressed="true">Romanized Nepali</button>
@@ -132,8 +147,8 @@
               <span class="notice-icon" aria-hidden="true">♪</span>
               <div>
                 <h3>Lyrics are not available as text yet.</h3>
-                <p>Watch the Sound Town video above to read along. Text lyrics can be added here when provided by the rights holder or supplied with permission.</p>
-                <a id="lyrics-video-link" target="_blank" rel="noopener noreferrer">Open the lyric video on YouTube ↗</a>
+                <p>Watch the official video above to read along. Text lyrics can be added here when provided by the rights holder or supplied with permission.</p>
+                <a id="lyrics-video-link" target="_blank" rel="noopener noreferrer">Open the official video on YouTube ↗</a>
               </div>
             </div>
           </section>

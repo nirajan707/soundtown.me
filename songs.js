@@ -1,5 +1,52 @@
 window.SOUNDTOWN_SONGS = [
   {
+    "id": "uU4JRR8vzwU",
+    "title": "Long Way from Home (Official Video) | MC SQUARE | Radhika Bhide | Wicked Sunny | The Local Kid EP",
+    "displayTitle": "Long Way from Home",
+    "artist": "MC SQUARE, Radhika Bhide, Wicked Sunny",
+    "publisher": "Times Music",
+    "publisherUrl": "https://www.youtube.com/@timesmusicindia",
+    "languages": ["hi", "en"],
+    "details": {
+      "singers": "MC SQUARE, Radhika Bhide, Wicked Sunny",
+      "composer": "CYRIL",
+      "lyricists": "MC SQUARE, Radhika Bhide, Wicked Sunny",
+      "description": "A heartfelt story of voices chasing their dreams, with an emotional, cinematic journey about leaving home and searching for success in a big city."
+    },
+    "tags": [
+      "Hindi song",
+      "English song",
+      "Hinglish song",
+      "Indian hip hop",
+      "rap",
+      "Long Way from Home lyrics",
+      "लॉन्ग वे फ्रॉम होम",
+      "MC SQUARE",
+      "Radhika Bhide",
+      "Wicked Sunny",
+      "CYRIL",
+      "The Local Kid EP",
+      "Times Music"
+    ],
+    "seo": {
+      "title": "Long Way from Home (लॉन्ग वे फ्रॉम होम) | Sound Town",
+      "description": "Long Way from Home by MC SQUARE, Radhika Bhide and Wicked Sunny, composed by CYRIL. Watch the official video and explore Hindi and English song details.",
+      "keywords": [
+        "Long Way from Home",
+        "Long Way from Home lyrics",
+        "लॉन्ग वे फ्रॉम होम lyrics in Hindi",
+        "MC SQUARE Long Way from Home",
+        "Radhika Bhide",
+        "Wicked Sunny",
+        "CYRIL composer",
+        "Hindi English song",
+        "Hinglish song",
+        "The Local Kid EP",
+        "Times Music official video"
+      ]
+    }
+  },
+  {
     "id": "RagHh0PITE8",
     "title": "Dada Pari Kanchi Nachi Raki xe | Kamal Phool | Yabesh Thapa | ClassXpresentation | viral song",
     "lyrics": {
