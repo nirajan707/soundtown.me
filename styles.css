@@ -38,6 +38,7 @@ kbd { width: 20px; height: 21px; display: grid; flex: 0 0 auto; place-items: cen
 .header-channel span:last-child { color: #8c927f; font-size: 14px; }
 
 .page-shell { width: min(100% - 48px, 980px); min-height: 55vh; margin: 0 auto; }
+.ad-slot { width: min(100% - 48px, 980px); min-height: 90px; margin: 22px auto 0; }
 .home-view { padding-bottom: 12px; }
 .hero { padding: 72px 0 50px; border-bottom: 1px solid var(--line); }
 .eyebrow { display: inline-flex; align-items: center; gap: 9px; color: #858b7e; font-size: 9px; font-weight: 700; letter-spacing: 1.5px; }
