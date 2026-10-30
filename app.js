@@ -8,8 +8,8 @@ const siteHomeUrl = new URL("/", document.querySelector('link[rel="canonical"]')
 let visibleCount = 12;
 let activeLyricsLanguage = "romanized";
 let currentSong = null;
-const homeTitle = "Nepali Songs & New Music Videos | Sound Town";
-const homeDescription = "Discover new Nepali songs, music videos, and song details on Sound Town. Browse a growing collection of official videos and search by song title or artist.";
+const homeTitle = "Nepali Songs, Lyrics & Videos | Sound Town";
+const homeDescription = "Discover Nepali songs, read lyrics for selected tracks, and watch official music videos on Sound Town. Search by song title, artist, or lyrics to find music.";
 
 function escapeHtml(value) {
   return String(value).replace(/[&<>"']/g, (character) => ({
@@ -380,8 +380,13 @@ function setMeta(selector, attribute, value) {
 
 function setSongSeo(song) {
   const seo = song.seo || {};
-  const title = seo.title || `${songName(song)} lyrics | Sound Town`;
-  const description = seo.description || `${song.title}. ${song.lyrics ? "Read the romanized Nepali lyrics" : "Find song details and lyrics information"} and watch the official video on Sound Town.`;
+  const hasLyrics = song.lyrics && (
+    Array.isArray(song.lyrics.romanized) || Array.isArray(song.lyrics.devanagari)
+  );
+  const title = seo.title || `${songName(song)} ${hasLyrics ? "lyrics" : "official video"} | Sound Town`;
+  const description = seo.description || (hasLyrics
+    ? `${songName(song)}${song.artist ? ` by ${song.artist}` : ""}. Read the available song lyrics and watch the official music video on Sound Town.`
+    : `Watch the official music video for ${songName(song)}${song.artist ? ` by ${song.artist}` : ""} on Sound Town. Explore song details and related Nepali songs.`);
   const keywords = [...new Set([
     ...(seo.keywords || []),
     ...(song.tags || []),
@@ -425,7 +430,7 @@ function setSongSeo(song) {
 function setHomeSeo() {
   document.title = homeTitle;
   setMeta('meta[name="description"]', "content", homeDescription);
-  setMeta('meta[name="keywords"]', "content", "Nepali songs, new Nepali songs, Nepali music videos, official Nepali songs, Sound Town");
+  setMeta('meta[name="keywords"]', "content", "Nepali song lyrics, Nepali songs, new Nepali songs, Nepali music videos, official Nepali songs, Sound Town");
   setMeta('meta[property="og:type"]', "content", "website");
   setMeta('meta[property="og:title"]', "content", homeTitle);
   setMeta('meta[property="og:description"]', "content", homeDescription);
