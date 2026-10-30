@@ -8,8 +8,8 @@ const siteHomeUrl = new URL("/", document.querySelector('link[rel="canonical"]')
 let visibleCount = 12;
 let activeLyricsLanguage = "romanized";
 let currentSong = null;
-const homeTitle = "Nepali Songs, Lyrics & Videos | Sound Town";
-const homeDescription = "Discover Nepali songs, read lyrics for selected tracks, and watch official music videos on Sound Town. Search by song title, artist, or lyrics to find music.";
+const homeTitle = "Songs, Lyrics & Music Videos | Sound Town";
+const homeDescription = "Discover songs from Nepal and around the world. Search by song title, artist, or lyrics, explore music details, and watch official videos on Sound Town.";
 
 function escapeHtml(value) {
   return String(value).replace(/[&<>"']/g, (character) => ({
@@ -311,6 +311,7 @@ function renderLyrics(song) {
         <h3>Lyrics are not available as text yet.</h3>
         <p>Watch the official video above to read along. Text lyrics can be added here when provided by the rights holder or supplied with permission.</p>
         <a id="lyrics-video-link" href="${songUrl(song)}" target="_blank" rel="noopener noreferrer">Open the official video on YouTube ↗</a>
+        ${song.lyricsUrl ? `<p><a href="${escapeHtml(song.lyricsUrl)}" target="_blank" rel="noopener noreferrer">Find lyrics on Genius ↗</a></p>` : ""}
       </div>`;
     return;
   }
@@ -418,11 +419,11 @@ function setSongSeo(song) {
     url: pageUrl,
     keywords,
     inLanguage: song.languages || ["ne"],
-    publisher: {
+    publisher: song.publisher ? {
       "@type": "Organization",
-      name: song.publisher || "Sound Town",
+      name: song.publisher,
       url: song.publisherUrl || siteHomeUrl.href
-    }
+    } : undefined
   };
   document.querySelector("#song-schema").textContent = JSON.stringify(schema);
 }
@@ -430,7 +431,7 @@ function setSongSeo(song) {
 function setHomeSeo() {
   document.title = homeTitle;
   setMeta('meta[name="description"]', "content", homeDescription);
-  setMeta('meta[name="keywords"]', "content", "Nepali song lyrics, Nepali songs, new Nepali songs, Nepali music videos, official Nepali songs, Sound Town");
+  setMeta('meta[name="keywords"]', "content", "songs, song lyrics, English song lyrics, Nepali songs, Nepali song lyrics, music videos, Sound Town");
   setMeta('meta[property="og:type"]', "content", "website");
   setMeta('meta[property="og:title"]', "content", homeTitle);
   setMeta('meta[property="og:description"]', "content", homeDescription);
