@@ -147,6 +147,87 @@ window.SOUNDTOWN_SONGS = [
     }
   },
   {
+    "id": "oafxkMv4xnc",
+    "title": "Bairan (बैरण) – Animated Love Story | Banjaare (Official Video)",
+    "displayTitle": "Bairan (बैरण)",
+    "artist": "Banjaare",
+    "languages": ["hi"],
+    "details": {
+      "description": "Watch the official Bairan music video by Banjaare. Explore the song details and find Bairan lyrics and related music info."
+    },
+    "tags": [
+      "Bairan",
+      "बैरण",
+      "Bairan lyrics",
+      "Banjaare",
+      "Banjaare songs",
+      "Bairan song",
+      "official video",
+      "Hindi song"
+    ],
+    "lyrics": {
+      "romanized": [
+        {
+          "label": "Verse 1",
+          "lines": [
+            "Ho manne saambh saambh rakhe tere jhanjhraa ke jode",
+            "Meri gaal ro-ro ye bhi chhori baavle se hore",
+            "Mannne aawe jaave khyaal tere khaae jaave khyaal tere",
+            "Jeene ko ni deti haay bairi tannne aaee manne",
+            "Geeta mein gaai kade chhaati ke lagaai manne",
+            "Jid bhi gaya re teri yaad khadi paai manne",
+            "Saambh saambh rakhi bahut chhaati ke lagaai manne",
+            "Jid bhi gaya re teri yaad khadi paai manne"
+          ]
+        },
+        {
+          "label": "Verse 2",
+          "lines": [
+            "Ho maraya maraya phire dekh haal too bechare ka",
+            "Tere bin jeena bhi ke jeena banjaare ka",
+            "Khoya rahun yaad teri karke nadaania",
+            "Batuwe mein rakhun teri saambh ke nishaania",
+            "Tere bin kaal hore thik konyaa haal mera",
+            "Haath jodoon Ram de de saanson te rihaai manne",
+            "Geeta mein gaai kade chhaati ke lagaai manne",
+            "Jid bhi gaya re teri yaad khadi paai manne",
+            "Saambh saambh rakhi bahut chhaati ke lagaai manne",
+            "Jid bhi gaya re teri yaad khadi paai manne"
+          ]
+        },
+        {
+          "label": "Verse 3",
+          "lines": [
+            "Ha ha ha ha",
+            "Je too thodi ghabraja meri yaad tannne aaja",
+            "Too de diye aawaz re main aa jaunga",
+            "Todun duniya ki reet re ke haar re ke jeet",
+            "Mannne chahiye teri preet main nibha jaunga",
+            "Dekh baavla bana gayi manne likhna sikha gayi haay",
+            "Noch noch kha gayi teri bairan judai manne",
+            "Geeta mein gaai kade chhaati ke lagaai manne",
+            "Jid bhi gaya re teri yaad khadi paai manne",
+            "Aaj thi nibhaau jo si kasam thi khaai manne",
+            "Zindagi saari aa meri tere lekhe laai manne"
+          ]
+        }
+      ]
+    },
+    "seo": {
+      "title": "Bairan (बैरण) by Banjaare | Official Video & Lyrics",
+      "description": "Watch the official Bairan (बैरण) video by Banjaare and explore lyrics, song details, and artist information for the popular Bairan track.",
+      "keywords": [
+        "Bairan",
+        "बैरण",
+        "Bairan lyrics",
+        "Bairan Banjaare",
+        "Banjaare Bairan",
+        "Banjaare songs",
+        "Hindi song"
+      ]
+    }
+  },
+  {
     "id": "cQq6iLF66Gc",
     "title": "Alfaaz | Hamza Malik x Zain Zohaib | Official Visualiser",
     "displayTitle": "Alfaaz",
