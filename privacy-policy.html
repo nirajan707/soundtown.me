@@ -48,7 +48,7 @@
 
         <h2>Cookies and advertising</h2>
         <p>This site may display advertising through Google AdSense. Google and its partners may use cookies or similar technologies to show, measure, and personalize ads as described in their own policies. You can learn more about how Google uses information from sites and apps that use its services at <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer">Google’s partner-sites policy</a>.</p>
-        <p>You can manage or limit cookies through your browser settings. Disabling cookies may affect advertising preferences but does not prevent you from using the song library.</p>
+        <p>When you first visit, Sound Town asks whether you accept or decline optional cookie use. Your choice is saved in your browser’s local storage so the notice does not appear on every visit. You can manage or limit cookies through your browser settings. Disabling cookies may affect advertising preferences but does not prevent you from using the song library.</p>
 
         <h2>Third-party services</h2>
         <p>Song videos are embedded from YouTube or linked to YouTube. When you play an embedded video or follow a YouTube link, YouTube may collect information according to its <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">privacy policy</a>. We also use Google Fonts to load the site’s typography.</p>
@@ -80,5 +80,16 @@
         </a>
       </nav>
     </footer>
+    <aside class="cookie-banner" id="cookie-banner" aria-labelledby="cookie-heading" hidden>
+      <div>
+        <h2 id="cookie-heading">This site uses cookies.</h2>
+        <p>Sound Town and its partners may use cookies for advertising and embedded videos. Read our <a href="privacy-policy.html">privacy policy</a> to learn more.</p>
+      </div>
+      <div class="cookie-actions">
+        <button type="button" class="cookie-button cookie-button-secondary" data-cookie-choice="declined">Decline</button>
+        <button type="button" class="cookie-button" data-cookie-choice="accepted">Accept</button>
+      </div>
+    </aside>
+    <script src="cookie-consent.js" defer></script>
   </body>
 </html>
