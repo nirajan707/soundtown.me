@@ -6,6 +6,11 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://soundtown.me/privacy-policy.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://soundtown.me/?song=qH2sjvxt5v8</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

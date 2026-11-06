@@ -13,6 +13,7 @@ configuredSiteUrl.search = "";
 configuredSiteUrl.hash = "";
 const urls = [
   configuredSiteUrl.href,
+  new URL("privacy-policy.html", configuredSiteUrl.href).href,
   ...context.window.SOUNDTOWN_SONGS.map((song) => {
     const url = new URL(configuredSiteUrl.href);
     url.searchParams.set("song", song.id);
@@ -21,8 +22,8 @@ const urls = [
 ];
 const entries = urls.map((url, index) => `  <url>
     <loc>${url.replace(/&/g, "&amp;")}</loc>
-    <changefreq>${index === 0 ? "weekly" : "monthly"}</changefreq>
-    <priority>${index === 0 ? "1.0" : "0.7"}</priority>
+    <changefreq>${index === 0 ? "weekly" : index === 1 ? "yearly" : "monthly"}</changefreq>
+    <priority>${index === 0 ? "1.0" : index === 1 ? "0.5" : "0.7"}</priority>
   </url>`).join("\n");
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

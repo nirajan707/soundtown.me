@@ -142,6 +142,8 @@ h1, h2, h3, p { margin-top: 0; }
 .footer-brand .brand-mark { width: 34px; height: 34px; }
 .footer-brand .brand-name { font-size: 15px; }
 .copyright { margin: 0; color: #8c9188; font-size: 9px; text-align: center; }
+.privacy-link { color: #687b4a; font-size: 9px; text-decoration: underline; text-underline-offset: 3px; }
+.privacy-link:hover { color: #4d5e3b; }
 .social-links { display: flex; align-items: center; gap: 8px; }
 .social-link { width: 33px; height: 33px; display: grid; place-items: center; border: 1px solid #e5e7e1; border-radius: 50%; background: white; color: #5d684a; }
 a.social-link { transition: border-color .18s, background .18s; }
@@ -150,6 +152,16 @@ a.social-link:hover { border-color: #c2cbaa; background: #f3f5ee; }
 .social-link.is-pending { color: #a0a499; background: transparent; border-style: dashed; }
 .toast { position: fixed; z-index: 30; right: 20px; bottom: 20px; padding: 11px 14px; border: 1px solid #dfe3d5; border-radius: 5px; background: white; color: #53633e; box-shadow: 0 6px 20px #22271c14; font-size: 10px; opacity: 0; pointer-events: none; transform: translateY(8px); transition: .2s; }
 .toast.is-visible { opacity: 1; transform: translateY(0); }
+
+.policy-page { padding: 34px 0 70px; }
+.policy-content { max-width: 700px; padding: 28px 0 0; }
+.policy-content h1 { margin: 18px 0 8px; font-family: var(--serif); font-size: clamp(42px, 6vw, 60px); font-weight: 500; letter-spacing: -2px; }
+.policy-content h1 em { color: #71834e; font-weight: 500; }
+.policy-updated { margin-bottom: 34px; color: #92978c; font-size: 10px; }
+.policy-content h2 { margin: 31px 0 9px; font-family: var(--serif); font-size: 23px; font-weight: 600; letter-spacing: -.4px; }
+.policy-content p { color: #666d62; font-size: 13px; line-height: 1.8; }
+.policy-content a { color: #687b4a; text-decoration: underline; text-underline-offset: 3px; }
+.policy-content a:hover { color: #4d5e3b; }
 
 @media (min-width: 1280px) {
   .site-header { padding-right: calc((100vw - 1180px) / 2); padding-left: calc((100vw - 1180px) / 2); }
@@ -170,6 +182,7 @@ a.social-link:hover { border-color: #c2cbaa; background: #f3f5ee; }
   .feedback-band { align-items: flex-start; flex-direction: column; padding: 26px 18px; }
   .site-footer { width: calc(100% - 36px); flex-wrap: wrap; padding: 17px 0; }
   .copyright { order: 3; width: 100%; text-align: left; }
+  .privacy-link { order: 2; }
 }
 @media (max-width: 440px) {
   .site-header { gap: 10px; padding: 0 12px; }
@@ -200,6 +213,9 @@ a.social-link:hover { border-color: #c2cbaa; background: #f3f5ee; }
   .lyrics-notice h3 { font-size: 15px; }
   .lyrics-notice p { font-size: 10px; }
   .footer-brand .brand-name { font-size: 14px; }
+  .policy-page { padding-top: 24px; }
+  .policy-content h1 { font-size: 38px; }
+  .policy-content p { font-size: 12px; }
   .social-links { gap: 5px; }
 }
 @media (prefers-reduced-motion: reduce) {
