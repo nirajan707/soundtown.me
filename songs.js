@@ -436,6 +436,131 @@ window.SOUNDTOWN_SONGS = [
       "Tamil music video"
     ],
     "lyricsUrl": "https://genius.com/search?q=Radhimaa%20Sai%20Abhyankkar",
+    "lyrics": {
+      "romanized": [
+        {
+          "label": "Chorus",
+          "lines": [
+            "Radhimaa hey radhimaa",
+            "muttikichu nenjorama",
+            "Radhimaa hey radhimaa",
+            "Kaadhal ippadi suduma",
+            "hey Radhimaa hey radhimaa",
+            "Vitutu poriyea iruma maa",
+            "hey Radhimaa en radhimaa"
+          ]
+        },
+        {
+          "label": "Verse 1",
+          "lines": [
+            "kai vitutuiyee kai vituua mathiri pudikiriyaa",
+            "thattitiyaa",
+            "En sogatha engana mathikiriyaa",
+            "Paathutuiyaa",
+            "naan paadura thavippa rasikiriyaa",
+            "konnutiyeaa",
+            "En idhayam norunga sirichiye"
+          ]
+        },
+        {
+          "label": "Refrain",
+          "lines": [
+            "Radhimaa hey radhimaa",
+            "Senjathu mothamum sadhimaa",
+            "Radhimaa en radhimaa",
+            "Enna ippadi aakalama",
+            "Radhimaa hey radhimaa",
+            "Senjathu mothamum sadhimaa",
+            "Radhimaa en radhimaa",
+            "Enna ippadi aakalama"
+          ]
+        },
+        {
+          "label": "Verse 2",
+          "lines": [
+            "Eppovumey vittu kodutha unakku enna pudikumaa",
+            "enna panna enna viduva",
+            "manasuku nerukkama",
+            "Nenjuruvi ponnu andha pakkam thirumpicham",
+            "Pothi vecha chinna kaadhal puluthiyila vilunthucham",
+            "Thangamaana paiyan naanu",
+            "Enna than d unakku",
+            "Unna pangamaa parthupen",
+            "Theriyaatha jinukku",
+            "Ey, ella meeri aasa vecha theva dhaan d enakku",
+            "Ne ponaalum sirikanumnu ezhuthi irukku"
+          ]
+        },
+        {
+          "label": "Refrain",
+          "lines": [
+            "Thangamaana paiyan naanu",
+            "Enna than d unna_unakku",
+            "Unna pangamaa parthupen",
+            "Theriyaatha jinu_jinukku",
+            "Ey, ella meeri aasa vecha theva dhaan d ena-enakku",
+            "Ne ponaalum sirikanumnu ezhuthi irukku"
+          ]
+        },
+        {
+          "label": "Verse 3",
+          "lines": [
+            "Hoo rekka pola enaiyum eduthu",
+            "Pakkathula vechikita",
+            "Raththa bandham pola irukka kattikita",
+            "Thavichu vantha ivanukku",
+            "Annaikey muththamittal annanthu kaththavutta",
+            "Inniki ethuvum solama engiayoo maranjita",
+            "Engana avanu eluthuna kirukalanu varanjita",
+            "ravusaa pona enna looosa dhaan suththa vitta",
+            "adiyeaa veththu vetta"
+          ]
+        },
+        {
+          "label": "Bridge",
+          "lines": [
+            "Avala varuva",
+            "paranthu pona kizhiyaaga",
+            "iru da varuva",
+            "tholanju pona oli aah",
+            "azhaga varuva, kadanthu pona thimiraaga",
+            "mutaala aiaiiyooo"
+          ]
+        },
+        {
+          "label": "Verse 4",
+          "lines": [
+            "Thangamaana paiyan naanu",
+            "Enna than d unakku",
+            "Unna pangamaa parthupuvan",
+            "Theriyaatha jinukku",
+            "Ey, ella meeri aasa vechan enna kovam unakku",
+            "Ne vittalumnu vaazhamnu pidichirukku"
+          ]
+        },
+        {
+          "label": "Refrain",
+          "lines": [
+            "Thangamaana paiyan naanu",
+            "Enna than d unna_unakku",
+            "Unna pangamaa parthupen",
+            "Theriyaatha jinu_jinukku",
+            "Ey, ella meeri aasa vecha theva dhaan d ena-enakku",
+            "Ne ponaalum sirikanumnu ezhuthi irukku"
+          ]
+        },
+        {
+          "label": "Outro",
+          "lines": [
+            "Baskar uncle Baskar uncle",
+            "Thangamaana paiyan naanu",
+            "Unna pangamaa parthupen",
+            "ella meeri aasa vechen",
+            "ponaplu=olum sirikanumnu ezhuthi irukku"
+          ]
+        }
+      ]
+    },
     "seo": {
       "title": "Radhimaa by Sai Abhyankkar | Music Video & Lyrics",
       "description": "Watch Sai Abhyankkar's Radhimaa music video from Think Indie. Explore song details, featured artist Bhagyashri Borse, and lyrics.",
@@ -505,6 +630,88 @@ window.SOUNDTOWN_SONGS = [
       "Punjabi music video"
     ],
     "lyricsUrl": "https://genius.com/search?q=Kaali%20Hoodie%20Sidhu%20Moose%20Wala%20Bohemia",
+    "lyrics": {
+      "romanized": [
+        {
+          "label": "Verse 1",
+          "lines": [
+            "Oh ajj kal bollywood waleya naal khehnde ne utthe",
+            "Jo streetaan vichon munde baliye",
+            "Dekh la industry te raaj kar de",
+            "Main Supreme de jo gunde baliye",
+            "Maarde aa jado game vich entry",
+            "Aa lalli shalli boundary ton bahar khaad de"
+          ]
+        },
+        {
+          "label": "Chorus",
+          "lines": [
+            "Jitthe kaali hoodie aala tera yaar bukhta",
+            "Utthe Gucci suit'an aale ni qataar khadd de",
+            "Jitthe kaali hoodie aala tera yaar bukhta",
+            "Jitthe kaali hoodie aala tera yaar bukhta",
+            "Utthe Gucci suit'an aale ni qataar khadd de"
+          ]
+        },
+        {
+          "label": "Verse 2",
+          "lines": [
+            "Kanna desh jive doori, kaddi industry poori",
+            "Life story jive movie, worldwide mashoori",
+            "Fame da tod khala, jag ch bol baala",
+            "Main kaali hoodie ch munde aale suit paaya kaala",
+            "Naal Sidhu Moose Wala, raaj de same beef",
+            "Hum jithon langha main, saare kehnde",
+            "Same beef, saadi hawa ch uddna par ground",
+            "Par connected, same black jacket ch break",
+            "Kitte main racket"
+          ]
+        },
+        {
+          "label": "Verse 3",
+          "lines": [
+            "Pata lag juga kina ahankaar jatt che",
+            "Mili kalle ch behave vich change koi na",
+            "Moose aale di mehnat represent kaarti",
+            "Ni main phokar panne nu lai range koi na",
+            "Mera vair te shareeka kise naal koi na",
+            "Vair te shareeka kise naal koi na",
+            "Ni main hit inna bena ehe taar radd de"
+          ]
+        },
+        {
+          "label": "Chorus",
+          "lines": [
+            "Jitthe kaali hoodie aala tera yaar bukhta",
+            "Utthe Gucci suit'an aale ni qataar khadd de",
+            "Jitthe kaali hoodie aala tera yaar bukhta",
+            "Utthe Gucci suit'an aale ni qataar khadd de"
+          ]
+        },
+        {
+          "label": "Verse 4",
+          "lines": [
+            "Apa kami pesh kise te kadi ni kiti bang",
+            "Hood change kita par hoodie ni kiti change",
+            "Vairi hoje craft, raaja kalla khada proud",
+            "Jigaane kite daaf, uda main shawdaav",
+            "In pyaar main kamaya hoon main aage ki nod",
+            "Naal mere Sidhu Moose Wala, gore",
+            "Do decks ton saun hale",
+            "Vi classic, same black jacket break kide",
+            "Main rack"
+          ]
+        },
+        {
+          "label": "Final chorus",
+          "lines": [
+            "Jitthe kaali hoodie aala tera yaar bukhta",
+            "Utthe Gucci suit'an aale ni qataar khadd de",
+            "Jitthe kaali hoodie aala tera yaar bukhta"
+          ]
+        }
+      ]
+    },
     "seo": {
       "title": "Kaali Hoodie by Sidhu Moose Wala ft. Bohemia | Official Video",
       "description": "Watch Sidhu Moose Wala and Bohemia in the official Kaali Hoodie music video, produced by The Kidd. Explore the track and find lyrics.",
@@ -540,6 +747,126 @@ window.SOUNDTOWN_SONGS = [
       "Saregama Music"
     ],
     "lyricsUrl": "https://genius.com/search?q=Gehra%20Hua%20Arijit%20Singh%20Shashwat%20Sachdev",
+    "lyrics": {
+      "devanagari": [
+        {
+          "label": "मुखड़ा",
+          "lines": [
+            "तु अगर मेरी, ये हवाएँ तेरी",
+            "तु अगर मेरी, सारी राहें तेरी",
+            "तु अगर मेरी, मैं हूँ तेरा",
+            "तु अगर मेरी, ये उजाले तेरे",
+            "तु अगर मेरी, दिल हवाले तेरे",
+            "तु अगर मेरी, मैं हूँ तेरा"
+          ]
+        },
+        {
+          "label": "प्री-कोरस",
+          "lines": [
+            "बेताब-सा मोहब्बत का तु इन्क़लाब है",
+            "मेरा जहाँ तेरी बाँहों में ख़्वाब, ख़्वाब है"
+          ]
+        },
+        {
+          "label": "कोरस",
+          "lines": [
+            "गहरा हुआ, गहरा हुआ",
+            "रंग आशिक़ी गहरा हुआ",
+            "गहरा हुआ, गहरा हुआ",
+            "दरिया दुआ गहरा हुआ",
+            "तेरा हुआ"
+          ]
+        },
+        {
+          "label": "मुखड़ा",
+          "lines": [
+            "तु अगर मेरी, ये हवाएँ तेरी",
+            "तु अगर मेरी, सारी राहें तेरी",
+            "तु अगर मेरी, मैं हूँ तेरा"
+          ]
+        },
+        {
+          "label": "अंतरा 1",
+          "lines": [
+            "पलके झपकता है आसमान",
+            "लाखों फ़रिश्तों की है तु जान",
+            "वो पूछते हैं रहती कहाँ",
+            "मेरी बाँहों में रहती, उनको बता",
+            "पलके झपकता है आसमान",
+            "उसने भी तुझ-सा देखा कहाँ",
+            "है रौनकें वहाँ, तु है जहाँ",
+            "मेरी बाँहों में रहना, यही है दुआ"
+          ]
+        },
+        {
+          "label": "अंतरा 2",
+          "lines": [
+            "तु अगर मेरी, है फ़साना तेरा",
+            "तु अगर मेरी, तो ज़माना तेरा",
+            "तु अगर मेरी, मैं हूँ तेरा"
+          ]
+        },
+        {
+          "label": "प्री-कोरस",
+          "lines": [
+            "बेताब-सा मोहब्बत का तु इन्क़लाब है",
+            "मेरा जहाँ तेरी बाँहों में ख़्वाब, ख़्वाब है"
+          ]
+        },
+        {
+          "label": "कोरस",
+          "lines": [
+            "गहरा हुआ, गहरा हुआ",
+            "रंग आशिक़ी गहरा हुआ",
+            "तेरा हुआ"
+          ]
+        },
+        {
+          "label": "मुखड़ा",
+          "lines": [
+            "तु अगर मेरी, ये हवाएँ तेरी",
+            "तु अगर मेरी, सारी राहें तेरी",
+            "तु अगर मेरी, मैं हूँ तेरा"
+          ]
+        },
+        {
+          "label": "संगीत",
+          "lines": [
+            "नी सा गा सा पा मा गा रे",
+            "नी सा गा सा पा मा गा रे सा",
+            "नी सा गा सा पा मा गा रे",
+            "नी सा गा सा पा मा गा रे सा"
+          ]
+        },
+        {
+          "label": "अंतरा 3",
+          "lines": [
+            "तेरी मोहब्बत में जलना भी है",
+            "और तुझसे बचके ही चलना भी है",
+            "कुछ रंग अपना बदलना भी है",
+            "मैंने ढलना तेरे रंग में है सदा",
+            "तु चाँद है एक धड़कता हुआ",
+            "चोरी से मुझको ही तकता हुआ",
+            "सीने से लगके चमकता हुआ",
+            "मेरी जन्नत का रस्ता, तु ही तु हुआ"
+          ]
+        },
+        {
+          "label": "अंतिम कोरस",
+          "lines": [
+            "तु अगर मेरी, ये हवाएँ तेरी",
+            "तु अगर मेरी, सारी राहें तेरी",
+            "तु अगर मेरी, मैं हूँ तेरा",
+            "बेताब-सा मोहब्बत का तु इन्क़लाब है",
+            "मेरा जहाँ तेरी बाँहों में ख़्वाब, ख़्वाब है",
+            "गहरा हुआ, गहरा हुआ",
+            "रंग आशिक़ी गहरा हुआ",
+            "गहरा हुआ, गहरा हुआ",
+            "दरिया दुआ गहरा हुआ"
+          ]
+        }
+      ]
+    },
     "seo": {
       "title": "Gehra Hua from Dhurandhar | Arijit Singh & Shashwat Sachdev",
       "description": "Watch the official Saregama video for Gehra Hua from Dhurandhar, sung by Arijit Singh and composed by Shashwat Sachdev. Find lyrics and song details.",
@@ -573,6 +900,129 @@ window.SOUNDTOWN_SONGS = [
       "Punjabi music video"
     ],
     "lyricsUrl": "https://genius.com/search?q=Ashke%20Karan%20Aujla",
+    "lyrics": {
+      "romanized": [
+        {
+          "label": "Chorus",
+          "lines": [
+            "Jitt'aa de shaunki",
+            "Sohniye hara'va vairi hass ke",
+            "Gidda landua da",
+            "Yaar aa pavaunda main keha das ke"
+          ]
+        },
+        {
+          "label": "Verse 1",
+          "lines": [
+            "Baabe di saanu bakshe",
+            "Kann nathiya gaani lashke",
+            "Ni modde paundi",
+            "Jhummar dunali keh ke ashke",
+            "Mere jor bahla ae patt 'che",
+            "Koi jaadu saala hath 'che",
+            "Tu jigra dekhi jatt 'che",
+            "Khadh jaanda kalla kath 'che",
+            "Main sidda chalda puthi'aa na",
+            "Bing' wal ni saala matt 'che",
+            "Latt'aa koi khichh da khichh le",
+            "Mainu trust aa neeli chhat 'ch"
+          ]
+        },
+        {
+          "label": "Verse 2",
+          "lines": [
+            "Saade kam kaale",
+            "Teri'aa gal'an de utte laali'an",
+            "Ni sutti'aa si sohniye",
+            "Kismat'an main 'thali'aa",
+            "Pind'aa aale aa",
+            "Saanu ta theon pind'an aali'aa",
+            "Ah asla karda chhaa'n saanu",
+            "Ya motor'an utte taali'aa",
+            "Mai yaar yaar'an da jogi",
+            "Mere dabb te asle been'aa",
+            "Mainu ditte maa ne jigre ni",
+            "Kalla chauda ni seena",
+            "Haan baby you so fire",
+            "Kahe jehdi mile haseena",
+            "Ve main miss kardi aa tainu",
+            "Tu kade milja yaar shakeena"
+          ]
+        },
+        {
+          "label": "Verse 3",
+          "lines": [
+            "Mann da guru'aa nu",
+            "Nature aa rakane mera saadh te",
+            "Ik oh rabb chete",
+            "Ohde to bina ni aundi yaad te",
+            "Ajj saukhi langdi",
+            "Baad di dekhange jaane baad te",
+            "Thode simple mere nanke",
+            "Par OG mere dadke"
+          ]
+        },
+        {
+          "label": "Verse 4",
+          "lines": [
+            "Jithe pair rakha",
+            "Beeba othe thaalda tabahi",
+            "Pind lai lye 25 kile",
+            "Kal hi de ke aaya s'ayi",
+            "Show off de ni aadi aa",
+            "Bas hind aa puggai",
+            "Chakki Milli di mai Lambo",
+            "Halle photo vi ni payi",
+            "Main sidha turre'aa java",
+            "Tu takkdi tedhi tedhi",
+            "Tu body karli slim peary",
+            "Te main karda kamm shady",
+            "Saada ta tora phera ae",
+            "Na main ni launda gedhi",
+            "Car'an jutti te asla ni",
+            "Eh teen'ae Italy made hi"
+          ]
+        },
+        {
+          "label": "Verse 5",
+          "lines": [
+            "Ni leeda latta top da rakha",
+            "Main jaane chaadh ke",
+            "Kachi oh chabb ja",
+            "Peene aa chah'aa nu ohda kaadh ke",
+            "Jatt khulla ghumda",
+            "Vairi nu rakha main ohda taadh ke",
+            "Ni tu phull vargi",
+            "Pathar'an nu aya munda paadh ke",
+            "Kardi meri'aa deeda",
+            "Ni saada khul gaya chaaka",
+            "Tu dil kardi ae chori ni",
+            "Te main maarida daaka",
+            "Bebe kehndi tainu vihauna",
+            "Te mera shashtar de naal thaaka",
+            "Das ki kar laina kaava'n",
+            "Ni mera baaja aala rakha"
+          ]
+        },
+        {
+          "label": "Outro",
+          "lines": [
+            "Raha vich rodhe",
+            "Behna je yaara na paina kasske",
+            "Jatt mudh to zehri",
+            "Naag ni reha koi saanu dass ke",
+            "Baabe di saanu bakshe",
+            "Kann nathiya gaani lashke",
+            "Ni modde paundi",
+            "Jhummar dunali keh ke ashke",
+            "Ni modde paundi",
+            "Jhummar dunali keh ke ashke",
+            "Ni modde paundi",
+            "Jhummar dunali keh ke ashke"
+          ]
+        }
+      ]
+    },
     "seo": {
       "title": "Ashke by Karan Aujla | Music Video & Lyrics",
       "description": "Watch Karan Aujla's Ashke music video from Aujla Szn 1, with music by Mxrci. Explore song information and find Punjabi lyrics.",

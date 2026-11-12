@@ -346,22 +346,28 @@ function renderLyrics(song) {
 
 function renderSongDetails(song) {
   const section = document.querySelector("#song-details-section");
-  const details = song.details;
-  section.hidden = !details;
-  if (!details) return;
+  const details = song.details || {};
+  const languageNames = { ne: "Nepali", hi: "Hindi", ur: "Urdu", en: "English" };
+  const languages = (song.languages || []).map((language) => languageNames[language] || language.toUpperCase()).join(", ");
+  const hasLyrics = Boolean(song.lyrics && (
+    Array.isArray(song.lyrics.romanized) || Array.isArray(song.lyrics.devanagari)
+  ));
+  const sourceType = hasLyrics ? "Lyrics and official video" : "Official video and song guide";
+  const description = details.description || `${songName(song)} is listed in the Sound Town library as a ${languages || "music"} release by ${song.artist || "the credited artist"}. This page links to the official video and shows related listening from the same curated catalog.`;
+  section.hidden = false;
 
   document.querySelector("#details-song-title").textContent = songName(song);
   [
-    ["singers", "detail-singers"],
+    ["singers", "detail-singers", song.artist],
     ["composer", "detail-composer"],
-    ["lyricists", "detail-lyricists"]
-  ].forEach(([key, id]) => {
-    const value = details[key];
+    ["lyricists", "detail-lyricists"],
+  ].forEach(([key, id, fallback]) => {
+    const value = details[key] || fallback;
     const row = document.querySelector(`#detail-${key}-row`);
     row.hidden = !value;
     if (value) document.querySelector(`#${id}`).textContent = value;
   });
-  document.querySelector("#song-details-description").textContent = details.description || "";
+  document.querySelector("#song-details-description").textContent = `${description} ${languages ? `Language: ${languages}.` : ""} Content: ${sourceType}.`;
 }
 
 function renderRelated(song) {
@@ -448,13 +454,16 @@ function openSong(song, updateUrl = true) {
   if (!song || !/^[A-Za-z0-9_-]{11}$/.test(song.id)) return;
   const title = songName(song);
   const versions = lyricVersions(song);
+  const hasLyrics = Array.isArray(versions.romanized) || Array.isArray(versions.devanagari);
+  const pageLabel = hasLyrics ? "Lyrics" : "Song guide";
   activeLyricsLanguage = versions.generatedLanguage === "romanized" ? "devanagari" : "romanized";
   homeView.hidden = true;
   songView.hidden = false;
-  document.querySelector("#song-title").textContent = `${title} Lyrics`;
+  document.querySelector("#song-title").textContent = `${title} ${pageLabel}`;
   document.querySelector("#song-byline").textContent = song.artist || song.title;
-  document.querySelector("#breadcrumb-title").textContent = `${title} lyrics`;
-  document.querySelector("#lyrics-song-title").textContent = `${title} lyrics`;
+  document.querySelector("#breadcrumb-title").textContent = `${title} ${pageLabel.toLowerCase()}`;
+  document.querySelector("#lyrics-heading").firstChild.textContent = hasLyrics ? "LYRICS: " : "SONG GUIDE: ";
+  document.querySelector("#lyrics-song-title").textContent = hasLyrics ? `${title} lyrics` : title;
   document.querySelector("#song-video").title = `${title} official music video`;
   document.querySelector("#song-video").src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(song.id)}?rel=0`;
   const videoLink = songUrl(song);
