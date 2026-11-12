@@ -8,8 +8,8 @@ const siteHomeUrl = new URL("/", document.querySelector('link[rel="canonical"]')
 let visibleCount = 12;
 let activeLyricsLanguage = "romanized";
 let currentSong = null;
-const homeTitle = "Songs, Lyrics & Music Videos | Sound Town";
-const homeDescription = "Discover songs from Nepal and around the world. Search by song title, artist, or lyrics, explore music details, and watch official videos on Sound Town.";
+const homeTitle = "Global Songs, Lyrics & Music Videos | Sound Town";
+const homeDescription = "Discover global songs and lyrics. Search by title, artist, or lyric, explore music details, and watch official videos on Sound Town.";
 
 function escapeHtml(value) {
   return String(value).replace(/[&<>"']/g, (character) => ({
@@ -437,7 +437,7 @@ function setSongSeo(song) {
 function setHomeSeo() {
   document.title = homeTitle;
   setMeta('meta[name="description"]', "content", homeDescription);
-  setMeta('meta[name="keywords"]', "content", "songs, song lyrics, English song lyrics, Nepali songs, Nepali song lyrics, music videos, Sound Town");
+  setMeta('meta[name="keywords"]', "content", "global songs, song lyrics, music lyrics, music videos, artists, official videos, Sound Town");
   setMeta('meta[property="og:type"]', "content", "website");
   setMeta('meta[property="og:title"]', "content", homeTitle);
   setMeta('meta[property="og:description"]', "content", homeDescription);
