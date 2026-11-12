@@ -2012,7 +2012,7 @@ window.SOUNDTOWN_SONGS = [
   },
   {
     "id": "ZRpUtVLUuaA",
-    "title": "हराएनी बाट छदै छुनि नी साथ #viralmusic #lyricalvideo #nepal #shorts #soundtown"
+    "title": "हराएनी बाट छदै छुनि नी साथ #viralmusic #lyricalvideo #shorts #soundtown"
   },
   {
     "id": "_JIljtigVWw",
