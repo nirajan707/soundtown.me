@@ -3,7 +3,7 @@ const path = require("node:path");
 const vm = require("node:vm");
 
 const repositoryRoot = path.resolve(__dirname, "..");
-const songsSource = fs.readFileSync(path.join(repositoryRoot, "songs.js"), "utf8");
+const songsSource = fs.readFileSync(path.join(repositoryRoot, "songs-data-20261112.js"), "utf8");
 const context = { window: {} };
 vm.runInNewContext(songsSource, context);
 
