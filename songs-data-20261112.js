@@ -2101,5 +2101,124 @@ window.SOUNDTOWN_SONGS = [
   {
     "id": "-DA25OGteiI",
     "title": "Gharako kancho choro ( घरको कान्छो छोरो ) | samir shrestha | lyrical video | new nepali song lyrics"
+  },
+  {
+    "id": "ycRBi5j3eTc",
+    "title": "DILRUBA DILNASHEEN | Rito Riba | Official Video",
+    "displayTitle": "Dilruba Dilnasheen",
+    "artist": "Rito Riba",
+    "languages": ["hi", "en"],
+    "details": {
+      "singers": "Rito Riba",
+      "description": "Watch Rito Riba's official Dilruba Dilnasheen video and read the available Hindi and Hinglish lyrics."
+    },
+    "tags": [
+      "Hindi song",
+      "Hinglish song",
+      "Dilruba Dilnasheen",
+      "Dilruba Dilnasheen lyrics",
+      "Rito Riba",
+      "Indian music",
+      "official video"
+    ],
+    "lyrics": {
+      "romanized": [
+        {
+          "label": "Verse 1",
+          "lines": [
+            "Qaabil-e-taareef Tu",
+            "Apsara’on Jaisi Huu-ba-huu",
+            "Dikhe Nigaahon Ko Tu Ku-ba-ku",
+            "Tera Asar Hardam Mere Ru-ba-ru",
+            "",
+            "Mehbooba Main Deevaana",
+            "I Just Wanna Tell You Jaana",
+            "Teri Ada’on Ke Qatre",
+            "Shabnami"
+          ]
+        },
+        {
+          "label": "Chorus",
+          "lines": [
+            "Dilruba Dil-nasheen",
+            "Ba-khuda Tu Haseen",
+            "Tere Jaisi Hoor Na Koi",
+            "",
+            "Tum Mile Gul Khile",
+            "Gul Khile Jo Tum Mile",
+            "Gulzar Zindagi Yeh Ho Gayi",
+            "",
+            "Dilruba Dil-nasheeen",
+            "Dilruba Dil-nasheen"
+          ]
+        },
+        {
+          "label": "Verse 2",
+          "lines": [
+            "Main Bhoolne Laga Hoon",
+            "Kaam-kaaj Sab Kyun",
+            "Kyunki Tuney Hai Zehan Ko Qaid Kar Liya",
+            "",
+            "Khalbali Machi Hai",
+            "Akl Na Bachi Hai",
+            "Dakhl Tuney Zindagi Mein Iss Qadar Diya",
+            "",
+            "Bana Main Majnu Mastaana",
+            "Aashiq Puraana",
+            "Sun Le Dil-phenk Hoon Nahin"
+          ]
+        },
+        {
+          "label": "Pre-Chorus",
+          "lines": [
+            "Mehbooba Main Deevaana",
+            "I Just Wanna Tell You Jaana",
+            "Teri Ada’on Ke Qatre",
+            "Shabnami"
+          ]
+        },
+        {
+          "label": "Chorus",
+          "lines": [
+            "Dilruba Dil-nasheen",
+            "Ba-khuda Tu Haseen",
+            "Tere Jaisi Hoor Na Koi",
+            "",
+            "Tum Mile Gul Khile",
+            "Gul Khile Jo Tum Mile",
+            "Gulzar Zindagi Yeh Ho Gayi",
+            "",
+            "Dilruba Dil-nasheeen",
+            "Dilruba Dil-nasheen"
+          ]
+        },
+        {
+          "label": "Outro",
+          "lines": [
+            "Kya Cheez Hai",
+            "Kya Cheez Hai",
+            "Tu Kya Cheez Hai",
+            "O Meri Dilruba",
+            "",
+            "Yeh Tera Noor Hai",
+            "Ya Suroor Hai",
+            "Fitoor Tera Chadh Chuka Hai",
+            "Meri Dilruba"
+          ]
+        }
+      ]
+    },
+    "seo": {
+      "title": "Dilruba Dilnasheen by Rito Riba | Official Video & Lyrics",
+      "description": "Watch Rito Riba's official Dilruba Dilnasheen video and read the available Hindi and Hinglish lyrics on Sound Town.",
+      "keywords": [
+        "Dilruba Dilnasheen",
+        "Dilruba Dilnasheen lyrics",
+        "Rito Riba",
+        "Rito Riba songs",
+        "Hindi song lyrics",
+        "Hinglish song"
+      ]
+    }
   }
 ];
