@@ -9,7 +9,7 @@ let visibleCount = 12;
 let activeLyricsLanguage = "romanized";
 let currentSong = null;
 const homeTitle = "Global Songs, Lyrics & Music Videos | Sound Town";
-const homeDescription = "Discover global songs and lyrics. Search by title, artist, or lyric, explore music details, and watch official videos on Sound Town.";
+const homeDescription = "Discover music from around the world. Search songs, explore artists, watch lyric videos and find your next favourite track.";
 
 function escapeHtml(value) {
   return String(value).replace(/[&<>"']/g, (character) => ({

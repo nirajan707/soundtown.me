@@ -121,7 +121,7 @@ h1, h2, h3, p { margin-top: 0; }
 .lyrics-guidance { margin: 7px 0 0; color: #858a80; font-size: 10px; line-height: 1.5; }
 .text-link { padding-bottom: 4px; color: #687b4a; font-size: 10px; font-weight: 600; white-space: nowrap; }
 .text-link:hover { text-decoration: underline; text-underline-offset: 3px; }
-.video-frame { width: 100%; position: relative; overflow: hidden; aspect-ratio: 16 / 9; border: 1px solid #e3e5df; border-radius: 7px; background: #eceee8; box-shadow: 0 8px 30px #24291a0b; }
+.video-frame { width: 100%; position: relative; overflow: hidden; aspect-ratio: 16 / 9; border: 1px solid #252925; border-radius: 7px; background: #171918; box-shadow: 0 12px 34px #17191826; }
 .video-frame iframe { width: 100%; height: 100%; position: absolute; inset: 0; border: 0; }
 .lyrics-section { padding-bottom: 35px; }
 .language-toggle { display: inline-flex; flex: 0 0 auto; gap: 3px; padding: 3px; border: 1px solid #e4e6df; border-radius: 6px; background: #f0f1ed; }
