@@ -364,6 +364,8 @@ function renderSongDetails(song) {
     ["producer", "detail-producer"],
     ["mandolin", "detail-mandolin"],
     ["mixingMastering", "detail-mixingMastering"],
+    ["backingVocals", "detail-backingVocals"],
+    ["saxophone", "detail-saxophone"],
   ].forEach(([key, id, fallback]) => {
     const value = details[key] || fallback;
     const row = document.querySelector(`#detail-${key}-row`);

@@ -1,5 +1,133 @@
 window.SOUNDTOWN_SONGS = [
   {
+    "id": "Ddm7VUgw5Vw",
+    "title": "DILRUBA DILNASHEEN - Dilfek - Rito Riba | Siddhant Kaushal | Arjun & Zahabiya | Anshul Garg",
+    "displayTitle": "DILRUBA DILNASHEEN",
+    "artist": "Rito Riba",
+    "languages": ["hi"],
+    "details": {
+      "description": "Dilruba Dilnasheen by Rito Riba, with lyrics by Siddhant Kaushal. Music produced by Tongs Kichu.",
+      "composer": "Rito Riba",
+      "lyricists": "Siddhant Kaushal",
+      "producer": "Tongs Kichu",
+      "backingVocals": "Suzanne D'Mello",
+      "saxophone": "Harsh Bhavsar"
+    },
+    "tags": [
+      "DILRUBA DILNASHEEN",
+      "DILRUBA DILNASHEEN lyrics",
+      "Rito Riba",
+      "Rito Riba songs",
+      "Dilfek",
+      "Siddhant Kaushal",
+      "Hindi song",
+      "Arjun and Zahabiya",
+      "Anshul Garg"
+    ],
+    "lyrics": {
+      "romanized": [
+        {
+          "label": "Verse 1",
+          "lines": [
+            "Qaabil-e-taareef tu",
+            "apsara’on jaisi huu-ba-huu",
+            "Dikhe nigaahon ko tu ku-ba-ku",
+            "tera asar hardam mere ru-ba-ru"
+          ]
+        },
+        {
+          "label": "Chorus",
+          "lines": [
+            "Mehbooba main deevaana",
+            "I just wanna tell you jaana",
+            "Teri ada’on ke qatre",
+            "shabnami"
+          ]
+        },
+        {
+          "label": "Hook",
+          "lines": [
+            "Dilruba dil-nasheen",
+            "ba-khuda tu haseen",
+            "tere jaisi hoor na koi",
+            "Tum mile gul khile",
+            "gul khile jo tum mile",
+            "gulzar zindagi yeh ho gayi",
+            "Dilruba dil-nasheeen",
+            "Dilruba dil-nasheen"
+          ]
+        },
+        {
+          "label": "Verse 2",
+          "lines": [
+            "Main bhoolne laga hoon",
+            "kaam-kaaj sab kyun",
+            "kyunki tuney hai zehan ko qaid kar liya",
+            "Khalbali machi hai",
+            "akl na bachi hai",
+            "dakhl tuney zindagi mein iss qadar diya"
+          ]
+        },
+        {
+          "label": "Verse 3",
+          "lines": [
+            "Bana main Majnu mastaana",
+            "aashiq puraana",
+            "sun le dil-phenk hoon nahin"
+          ]
+        },
+        {
+          "label": "Chorus",
+          "lines": [
+            "Mehbooba main deevaana",
+            "I just wanna tell you jaana",
+            "Teri ada’on ke qatre",
+            "shabnami"
+          ]
+        },
+        {
+          "label": "Hook",
+          "lines": [
+            "Dilruba dil-nasheen",
+            "ba-khuda tu haseen",
+            "tere jaisi hoor na koi",
+            "Tum mile gul khile",
+            "gul khile jo tum mile",
+            "gulzar zindagi yeh ho gayi",
+            "Dilruba dil-nasheeen",
+            "Dilruba dil-nasheen"
+          ]
+        },
+        {
+          "label": "Outro",
+          "lines": [
+            "Kya cheez hai",
+            "Kya cheez hai",
+            "Tu kya cheez hai",
+            "O meri dilruba",
+            "Yeh tera noor hai",
+            "ya suroor hai",
+            "fitoor tera chadh chuka hai",
+            "meri dilruba"
+          ]
+        }
+      ]
+    },
+    "seo": {
+      "title": "DILRUBA DILNASHEEN by Rito Riba | Lyrics & Official Video",
+      "description": "Read DILRUBA DILNASHEEN lyrics by Rito Riba. Listen to the official video and explore lyrics written by Siddhant Kaushal.",
+      "keywords": [
+        "DILRUBA DILNASHEEN lyrics",
+        "Rito Riba DILRUBA DILNASHEEN",
+        "Rito Riba lyrics",
+        "Dilfek",
+        "Siddhant Kaushal lyrics",
+        "Hindi song lyrics",
+        "Romantic Hindi lyrics"
+      ]
+    }
+  },
+  {
     "id": "Glhmg77LfAo",
     "title": "I Met Her Again - Maan Panu | Official Music Video",
     "displayTitle": "I Met Her Again",
