@@ -18,7 +18,10 @@ const urls = [
     const url = new URL(configuredSiteUrl.href);
     url.searchParams.set("song", song.id);
     return url.href;
-  })
+  }),
+  ...context.window.SOUNDTOWN_SONGS
+    .filter((song) => /^[A-Za-z0-9_-]{11}$/.test(song.id))
+    .map((song) => new URL(`songs/${encodeURIComponent(song.id)}/`, configuredSiteUrl.href).href)
 ];
 const entries = urls.map((url, index) => `  <url>
     <loc>${url.replace(/&/g, "&amp;")}</loc>

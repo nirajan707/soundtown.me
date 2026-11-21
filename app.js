@@ -436,10 +436,10 @@ function setSongSeo(song) {
   setMeta('meta[name="twitter:image"]', "content", `https://i.ytimg.com/vi/${encodeURIComponent(videoId)}/hqdefault.jpg`);
   setMeta('link[rel="canonical"]', "href", pageUrl);
 
-  const schema = {
+  const videoSchema = {
     "@context": "https://schema.org",
     "@type": "VideoObject",
-    name: song.title,
+    name: songName(song),
     description: description.slice(0, 160),
     thumbnailUrl: [`https://i.ytimg.com/vi/${encodeURIComponent(videoId)}/hqdefault.jpg`],
     embedUrl: `https://www.youtube-nocookie.com/embed/${encodeURIComponent(videoId)}`,
@@ -453,7 +453,28 @@ function setSongSeo(song) {
       url: song.publisherUrl || siteHomeUrl.href
     } : undefined
   };
-  document.querySelector("#song-schema").textContent = JSON.stringify(schema);
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: siteHomeUrl.href
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: songName(song),
+        item: pageUrl
+      }
+    ]
+  };
+  document.querySelector("#song-schema").textContent = JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [videoSchema, breadcrumbSchema]
+  });
 }
 
 function setHomeSeo() {
@@ -582,7 +603,8 @@ document.addEventListener("keydown", (event) => {
 function restoreRoute() {
   const querySongId = new URLSearchParams(window.location.search).get("song");
   const legacyMatch = window.location.hash.match(/^#song=([A-Za-z0-9_-]{11})$/);
-  const songId = querySongId || (legacyMatch && legacyMatch[1]);
+  const staticMatch = window.location.pathname.match(/^\/songs\/([A-Za-z0-9_-]{11})\/(?:index\.html)?$/);
+  const songId = querySongId || (legacyMatch && legacyMatch[1]) || (staticMatch && staticMatch[1]);
   const song = songId ? songs.find((item) => item.id === songId) : null;
   if (song) openSong(song, false);
   else {

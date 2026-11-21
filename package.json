@@ -1,6 +1,8 @@
 {
   "private": true,
   "scripts": {
-    "seo:sitemap": "node scripts/generate-sitemap.js"
+    "seo:sitemap": "node scripts/generate-sitemap.js",
+    "seo:prerender": "node scripts/prerender-songs.js",
+    "build": "npm run seo:prerender && npm run seo:sitemap"
   }
 }
