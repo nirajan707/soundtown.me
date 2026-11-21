@@ -2,7 +2,8 @@ window.SOUNDTOWN_SONGS = [
   {
     "id": "Ddm7VUgw5Vw",
     "title": "DILRUBA DILNASHEEN - Dilfek - Rito Riba | Siddhant Kaushal | Arjun & Zahabiya | Anshul Garg",
-    "displayTitle": "DILRUBA DILNASHEEN",
+    "displayTitle": "Dilruba Dilnasheen Lyrics – Tum Mile Gul Khile",
+    "slug": "dilruba-dilnasheen-lyrics",
     "artist": "Rito Riba",
     "languages": ["hi"],
     "details": {
@@ -27,9 +28,9 @@ window.SOUNDTOWN_SONGS = [
       ]
     },
     "seo": {
-      "title": "DILRUBA DILNASHEEN by Rito Riba | Lyrics & Official Video",
-      "description": "Read DILRUBA DILNASHEEN lyrics by Rito Riba. Listen to the official video and explore lyrics written by Siddhant Kaushal.",
-      "keywords": ["DILRUBA DILNASHEEN lyrics", "Rito Riba DILRUBA DILNASHEEN", "Rito Riba lyrics", "Dilfek", "Siddhant Kaushal lyrics", "Hindi song lyrics", "Romantic Hindi lyrics"]
+      "title": "Dilruba Dilnasheen Lyrics – Tum Mile Gul Khile",
+      "description": "Explore the beautiful lyrics of Dilruba Dilnasheen, a romantic Hindi song filled with poetic expressions of love, admiration, and affection. Read the complete lyrics, including the memorable lines \"Tum Mile Gul Khile, Gulzar Zindagi Yeh Ho Gayi.\"",
+      "keywords": ["Dilruba Dilnasheen lyrics", "Tum Mile Gul Khile lyrics", "Dilruba Dilnasheen song", "Qaabil E Taareef Tu lyrics", "Mehbooba Main Deewana lyrics", "Tere Jaisi Hoor Na Koi lyrics", "Hindi romantic song lyrics", "Romantic Hindi lyrics", "Gulzar Zindagi Yeh Ho Gayi lyrics", "Dilruba song lyrics"]
     }
   },
   {
@@ -2226,7 +2227,8 @@ window.SOUNDTOWN_SONGS = [
   {
     "id": "ycRBi5j3eTc",
     "title": "DILRUBA DILNASHEEN | Rito Riba | Official Video",
-    "displayTitle": "Dilruba Dilnasheen",
+    "displayTitle": "Dilruba Dilnasheen Lyrics – Tum Mile Gul Khile",
+    "slug": "dilruba-dilnasheen-lyrics",
     "artist": "Rito Riba",
     "languages": ["hi", "en"],
     "details": {
@@ -2330,15 +2332,19 @@ window.SOUNDTOWN_SONGS = [
       ]
     },
     "seo": {
-      "title": "Dilruba Dilnasheen by Rito Riba | Official Video & Lyrics",
-      "description": "Watch Rito Riba's official Dilruba Dilnasheen video and read the available Hindi and Hinglish lyrics on Sound Town.",
+      "title": "Dilruba Dilnasheen Lyrics – Tum Mile Gul Khile",
+      "description": "Explore the beautiful lyrics of Dilruba Dilnasheen, a romantic Hindi song filled with poetic expressions of love, admiration, and affection. Read the complete lyrics, including the memorable lines \"Tum Mile Gul Khile, Gulzar Zindagi Yeh Ho Gayi.\"",
       "keywords": [
-        "Dilruba Dilnasheen",
         "Dilruba Dilnasheen lyrics",
-        "Rito Riba",
-        "Rito Riba songs",
-        "Hindi song lyrics",
-        "Hinglish song"
+        "Tum Mile Gul Khile lyrics",
+        "Dilruba Dilnasheen song",
+        "Qaabil E Taareef Tu lyrics",
+        "Mehbooba Main Deewana lyrics",
+        "Tere Jaisi Hoor Na Koi lyrics",
+        "Hindi romantic song lyrics",
+        "Romantic Hindi lyrics",
+        "Gulzar Zindagi Yeh Ho Gayi lyrics",
+        "Dilruba song lyrics"
       ]
     }
   }
