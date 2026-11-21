@@ -72,8 +72,8 @@ window.SOUNDTOWN_SONGS = [
     },
     "seo": {
       "title": "I Met Her Again by Maan Panu | Lyrics & Official Video",
-      "description": "Read I Met Her Again lyrics by Maan Panu and watch the official music video. Music by Tav and mixed and mastered by Hanish Taneja.",
-      "keywords": ["I Met Her Again", "I Met Her Again lyrics", "I Met Her Again Maan Panu", "Maan Panu", "Maan Panu songs", "Hindi song", "Tav"]
+      "description": "Discover the lyrics of I Met Her Again by Maan Panu, featuring the heartfelt lines \"Vo Leke Aaye The Paimana, Naapne Mere Dard Yahan.\" A soulful song capturing emotions, memories, heartbreak, and the pain of seeing someone again.",
+      "keywords": ["I Met Her Again lyrics", "Maan Panu lyrics", "I Met Her Again Maan Panu", "Vo Leke Aaye The Paimana lyrics", "Naapne Mere Dard Yahan lyrics", "Maan Panu songs", "Hindi song lyrics", "Emotional Hindi lyrics", "Heartbreak song lyrics"]
     }
   },
   {
