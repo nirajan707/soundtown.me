@@ -1439,14 +1439,27 @@ window.SOUNDTOWN_SONGS = [
   },
   {
     "id": "0UPDBODtxzw",
-    "title": "Dracula (JENNIE Remix - Official Lyric Video) | Tame Impala ft. JENNIE",
-    "displayTitle": "Dracula (JENNIE Remix)",
+    "title": "DRACULA | JENNIE & Tame Impala",
+    "displayTitle": "DRACULA",
     "artist": "Tame Impala & JENNIE",
     "languages": ["en"],
     "tags": ["English song", "Dracula lyrics", "Tame Impala", "JENNIE"],
-    "lyricsUrl": "https://genius.com/search?q=Dracula%20Tame%20Impala%20JENNIE",
+    "lyrics": {
+      "romanized": [
+        {"label": "Intro", "lines": ["Oh-oh-oh-oh-oh, oh-oh-oh-oh-oh", "Oh-oh-oh-oh-oh, oh-oh-oh-oh-oh"]},
+        {"label": "Verse 1", "lines": ["The mornin' light is turnin' blue, the feelin' is bizarre (bizarre)", "The night is almost over, I still don't know where you are", "The shadows, yeah, they keep me pretty like a movie star", "Daylight makes me feel like Dracula (Dracula)"]},
+        {"label": "Pre-Chorus", "lines": ["In the end, I hope it's you and me (you and me)", "In the darkness, I would never leave (never leave)", "You won't ever see me in the light of day", "It's far too late, the time has come"]},
+        {"label": "Verse 2", "lines": ["I'm on the verge of cavin' in, I run back to the dark (dark)", "Now I'm Mr. Charisma, fuckin' Pablo Escobar", "My friends are sayin', \"Shut up, Jennie, just get in the car\" (hahaha, Jennie)", "I just wanna be right where you are (oh, my love)"]},
+        {"label": "Chorus", "lines": ["In the end, I hope it's you and me (you and me)", "In the darkness, I would never leave (never leave, I won't leave her)", "We both saw this moment comin' from afar (comin' from afar)", "Now here we are (here we are)"]},
+        {"label": "Post-Chorus", "lines": ["Run from the sunlight, Dracula", "Run from the sunlight, Dracula", "Run from the sunlight, Dracula (run from the sun)", "Isn't the view spectacular? (Dracula)"]},
+        {"label": "Verse 3", "lines": ["Hey, Kevin, what's up? (Haha)", "Come pull up in my spot", "Let's keep the night glowin'", "I don't ever wanna stop (hahaha)", "I'll never leave this floor, got me needin' more (oh-oh-oh-oh-oh)", "Sky is turnin' blue, let it clear the smoke (oh-oh-oh-oh-oh)", "Lip stain on the rim, bass is 'bout to blow (oh-oh-oh-oh-oh)", "Sinkin' in my teeth, I buy time (oh-oh-oh-oh-oh)"]},
+        {"label": "Bridge", "lines": ["But please, do you think about what it might mean? (Mean)", "'Cause I dream about you in my sleep", "Would you ever love someone like me (someone like me)", "Like me? (Oh)"]},
+        {"label": "Final Chorus", "lines": ["In the end, I hope it's you and me (oh, my love)", "In the darkness, I would never leave", "We both saw this moment comin' from afar (comin' from afar)", "Now here we are (here we are)"]},
+        {"label": "Outro", "lines": ["So run from the sunlight, Dracula", "So run from the sunlight, Dracula", "Run from the sunlight, Dracula", "Isn't the view spectacular?", "So run from the sunlight, Dracula", "Run from the sunlight, Dracula (run from the sunlight)", "Isn't the view spectacular? (Run from the sunlight, Dracula)", "Run from the sunlight, Dracula (run from the sunlight, Dracula)", "Run from the sunlight, Dracula (run from the sunlight, Dracula)", "Isn't the view spectacular?"]}
+      ]
+    },
     "seo": {
-      "title": "Dracula (JENNIE Remix) by Tame Impala & JENNIE | Video & Lyrics",
+      "title": "DRACULA by JENNIE & Tame Impala | Lyrics & Official Video",
       "description": "Watch the official Dracula JENNIE Remix lyric video by Tame Impala and JENNIE. Find lyrics on Genius.",
       "keywords": ["Dracula", "Dracula lyrics", "Tame Impala", "JENNIE", "English song"]
     }
