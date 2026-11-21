@@ -157,6 +157,7 @@ h1, h2, h3, p { margin-top: 0; }
 .footer-brand .brand-name { font-size: 15px; }
 .copyright { margin: 0; color: #8c9188; font-size: 9px; text-align: center; }
 .privacy-link { color: #687b4a; font-size: 9px; text-decoration: underline; text-underline-offset: 3px; }
+.footer-links { display: flex; align-items: center; gap: 14px; }
 .privacy-link:hover { color: #4d5e3b; }
 .social-links { display: flex; align-items: center; gap: 8px; }
 .social-link { width: 33px; height: 33px; display: grid; place-items: center; border: 1px solid #e5e7e1; border-radius: 50%; background: white; color: #5d684a; }

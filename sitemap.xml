@@ -6,6 +6,11 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://soundtown.me/about.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://soundtown.me/privacy-policy.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>

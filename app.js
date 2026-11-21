@@ -8,8 +8,8 @@ const siteHomeUrl = new URL("/", document.querySelector('link[rel="canonical"]')
 let visibleCount = 12;
 let activeLyricsLanguage = "romanized";
 let currentSong = null;
-const homeTitle = "Global Songs, Lyrics & Music Videos | Sound Town";
-const homeDescription = "Discover music from around the world. Search songs, explore artists, watch lyric videos and find your next favourite track.";
+const homeTitle = "Sound Town – Discover Music, Lyrics & Videos Worldwide";
+const homeDescription = "Sound Town is a global music discovery platform featuring songs, lyrics, music videos and artists from around the world.";
 
 function escapeHtml(value) {
   return String(value).replace(/[&<>"']/g, (character) => ({

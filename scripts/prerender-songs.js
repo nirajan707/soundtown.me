@@ -95,7 +95,7 @@ function lyricsMarkup(song) {
 function relatedMarkup(song) {
   const related = songs.filter((item) => item.id !== song.id).slice(0, 4);
   return related.map((item) => `<a class="song-card" href="/songs/${encodeURIComponent(item.id)}/" data-song-id="${escapeHtml(item.id)}">
-    <span class="card-thumbnail"><img src="https://i.ytimg.com/vi/${encodeURIComponent(item.id)}/hqdefault.jpg" alt="${escapeHtml(`${songName(item)} by ${item.artist || "the artist"} official video`)}" loading="lazy"></span>
+    <span class="card-thumbnail"><img src="https://i.ytimg.com/vi/${encodeURIComponent(item.id)}/hqdefault.jpg" alt="" loading="lazy"></span>
     <span class="card-title">${escapeHtml(songName(item))}</span>
     <span class="card-subtitle">${escapeHtml(item.artist || item.title)}</span>
   </a>`).join("");
@@ -180,5 +180,18 @@ for (const song of songs) {
   fs.mkdirSync(outputDir, { recursive: true });
   fs.writeFileSync(path.join(outputDir, "index.html"), renderSongPage(song), "utf8");
 }
+
+const indexPath = path.join(repositoryRoot, "index.html");
+let indexHtml = fs.readFileSync(indexPath, "utf8");
+const staticSongLinks = songs
+  .filter((song) => /^[A-Za-z0-9_-]{11}$/.test(song.id))
+  .map((song) => `<a class="song-card" href="/songs/${encodeURIComponent(song.id)}/" data-song-id="${escapeHtml(song.id)}">
+    <span class="card-thumbnail"><img src="https://i.ytimg.com/vi/${encodeURIComponent(song.id)}/hqdefault.jpg" alt="" loading="lazy"></span>
+    <span class="card-title">${escapeHtml(songName(song))}</span>
+    <span class="card-subtitle">${escapeHtml(song.artist || song.title)}</span>
+  </a>`).join("");
+indexHtml = indexHtml.replace(/<div class="song-grid" id="catalog-grid"[^>]*>[\s\S]*?<\/div>\s*<p class="catalog-note"/,
+  `<div class="song-grid" id="catalog-grid" aria-live="polite">${staticSongLinks}</div>\n          <p class="catalog-note"`);
+fs.writeFileSync(indexPath, indexHtml, "utf8");
 
 console.log(`Prerendered ${songs.length} song pages.`);
