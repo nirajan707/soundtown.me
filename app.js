@@ -223,8 +223,18 @@ function songName(song) {
   return song.displayTitle || song.title.split("|")[0].trim() || song.title;
 }
 
+function isSoundTownRelease(song) {
+  return song.contentType === "soundtown" &&
+    song.showLyrics === false &&
+    typeof song.youtubeVideoId === "string";
+}
+
+function releaseVideoId(song) {
+  return isSoundTownRelease(song) ? song.youtubeVideoId : song.id;
+}
+
 function songUrl(song) {
-  return `https://www.youtube.com/watch?v=${encodeURIComponent(song.id)}`;
+  return `https://www.youtube.com/watch?v=${encodeURIComponent(releaseVideoId(song))}`;
 }
 
 function songPageUrl(song) {
@@ -297,6 +307,12 @@ function renderResults(query, list) {
 function renderLyrics(song) {
   const content = document.querySelector("#lyrics-content");
   const languageToggle = document.querySelector("#language-toggle");
+  const lyricsSection = document.querySelector("#lyrics-section");
+  if (isSoundTownRelease(song) || song.showLyrics === false) {
+    lyricsSection.hidden = true;
+    return;
+  }
+  lyricsSection.hidden = false;
   currentSong = song;
   const versions = lyricVersions(song);
   const hasRomanized = Array.isArray(versions.romanized);
@@ -392,6 +408,7 @@ function setMeta(selector, attribute, value) {
 
 function setSongSeo(song) {
   const seo = song.seo || {};
+  const videoId = releaseVideoId(song);
   const hasLyrics = song.lyrics && (
     Array.isArray(song.lyrics.romanized) || Array.isArray(song.lyrics.devanagari)
   );
@@ -413,10 +430,10 @@ function setSongSeo(song) {
   setMeta('meta[property="og:title"]', "content", title);
   setMeta('meta[property="og:description"]', "content", description.slice(0, 160));
   setMeta('meta[property="og:url"]', "content", pageUrl);
-  setMeta('meta[property="og:image"]', "content", `https://i.ytimg.com/vi/${encodeURIComponent(song.id)}/hqdefault.jpg`);
+  setMeta('meta[property="og:image"]', "content", `https://i.ytimg.com/vi/${encodeURIComponent(videoId)}/hqdefault.jpg`);
   setMeta('meta[name="twitter:title"]', "content", title);
   setMeta('meta[name="twitter:description"]', "content", description.slice(0, 160));
-  setMeta('meta[name="twitter:image"]', "content", `https://i.ytimg.com/vi/${encodeURIComponent(song.id)}/hqdefault.jpg`);
+  setMeta('meta[name="twitter:image"]', "content", `https://i.ytimg.com/vi/${encodeURIComponent(videoId)}/hqdefault.jpg`);
   setMeta('link[rel="canonical"]', "href", pageUrl);
 
   const schema = {
@@ -424,8 +441,8 @@ function setSongSeo(song) {
     "@type": "VideoObject",
     name: song.title,
     description: description.slice(0, 160),
-    thumbnailUrl: [`https://i.ytimg.com/vi/${encodeURIComponent(song.id)}/hqdefault.jpg`],
-    embedUrl: `https://www.youtube-nocookie.com/embed/${encodeURIComponent(song.id)}`,
+    thumbnailUrl: [`https://i.ytimg.com/vi/${encodeURIComponent(videoId)}/hqdefault.jpg`],
+    embedUrl: `https://www.youtube-nocookie.com/embed/${encodeURIComponent(videoId)}`,
     contentUrl: songUrl(song),
     url: pageUrl,
     keywords,
@@ -460,19 +477,22 @@ function openSong(song, updateUrl = true) {
   const title = songName(song);
   const versions = lyricVersions(song);
   const hasLyrics = Array.isArray(versions.romanized) || Array.isArray(versions.devanagari);
-  const pageLabel = hasLyrics ? "Lyrics" : "Song guide";
+  const isSoundTown = isSoundTownRelease(song);
+  const pageLabel = isSoundTown ? "Official video" : (hasLyrics ? "Lyrics" : "Song guide");
   activeLyricsLanguage = versions.generatedLanguage === "romanized" ? "devanagari" : "romanized";
   homeView.hidden = true;
   songView.hidden = false;
-  document.querySelector("#song-title").textContent = `${title} ${pageLabel}`;
+  document.querySelector("#song-title").textContent = isSoundTown ? title : `${title} ${pageLabel}`;
   document.querySelector("#song-byline").textContent = song.artist || song.title;
-  document.querySelector("#breadcrumb-title").textContent = `${title} ${pageLabel.toLowerCase()}`;
+  document.querySelector("#breadcrumb-title").textContent = isSoundTown ? title : `${title} ${pageLabel.toLowerCase()}`;
   document.querySelector("#lyrics-heading").firstChild.textContent = hasLyrics ? "LYRICS: " : "SONG GUIDE: ";
   document.querySelector("#lyrics-song-title").textContent = hasLyrics ? `${title} lyrics` : title;
-  document.querySelector("#song-video").title = `${title} official music video`;
-  document.querySelector("#song-video").src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(song.id)}?rel=0`;
+  const videoId = releaseVideoId(song);
+  document.querySelector("#song-video").title = `${title} official music video${isSoundTown ? " on the Sound Town YouTube channel" : ""}`;
+  document.querySelector("#song-video").src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(videoId)}?rel=0`;
   const videoLink = songUrl(song);
   document.querySelector("#watch-youtube").href = videoLink;
+  document.querySelector("#watch-youtube").textContent = isSoundTown ? "Watch on YouTube ↗" : "Open on YouTube ↗";
   renderSongDetails(song);
   renderLyrics(song);
   renderRelated(song);

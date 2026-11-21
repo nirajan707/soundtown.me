@@ -288,6 +288,9 @@ window.SOUNDTOWN_SONGS = [
     "displayTitle": "Timi Bina Ta Khalai Khalo Xa Yo Sansara",
     "artist": "Anurag Khadka",
     "languages": ["ne"],
+    "contentType": "soundtown",
+    "youtubeVideoId": "qH2sjvxt5v8",
+    "showLyrics": false,
     "details": {
       "description": "Watch the latest Sound Town channel upload featuring Anurag Khadka's 'Timi Bina Ta Khalai Khalo Xa Yo Sansara' from Kasara."
     },
