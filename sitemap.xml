@@ -11,6 +11,11 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://soundtown.me/?song=Glhmg77LfAo</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://soundtown.me/?song=qH2sjvxt5v8</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -622,6 +627,11 @@
   </url>
   <url>
     <loc>https://soundtown.me/?song=-DA25OGteiI</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://soundtown.me/?song=ycRBi5j3eTc</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

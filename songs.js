@@ -1,5 +1,153 @@
 window.SOUNDTOWN_SONGS = [
   {
+    "id": "Glhmg77LfAo",
+    "title": "I Met Her Again - Maan Panu | Official Music Video",
+    "displayTitle": "I Met Her Again",
+    "artist": "Maan Panu",
+    "languages": ["hi"],
+    "details": {
+      "description": "I Met Her Again by Maan Panu. Music produced by Tav, composed and written by Maan Panu, with mandolin by Manash Saikia. Mixed and mastered by Hanish Taneja at Studio Alika.",
+      "composer": "Maan Panu",
+      "lyricists": "Maan Panu",
+      "producer": "Tav",
+      "mandolin": "Manash Saikia",
+      "mixingMastering": "Hanish Taneja at Studio Alika"
+    },
+    "tags": [
+      "I Met Her Again",
+      "I Met Her Again lyrics",
+      "Maan Panu",
+      "Maan Panu song",
+      "Hindi song",
+      "Indian music",
+      "Tav music"
+    ],
+    "lyrics": {
+      "romanized": [
+        {
+          "label": "Verse 1",
+          "lines": [
+            "Main unse mila sau raaton mein",
+            "Unn sawan ki barsaaton mein",
+            "Vo keh na chahte the shayad kuch",
+            "Main dekh na paya aankhon mein"
+          ]
+        },
+        {
+          "label": "Verse 2",
+          "lines": [
+            "Vo leke aaye the paimana",
+            "Naapne mere dard yahan",
+            "Dekh ke mujhko hasta hua",
+            "Vo laut gaye phir jaane kahan"
+          ]
+        },
+        {
+          "label": "Verse 3",
+          "lines": [
+            "Hum bhi apne shehzaade hain",
+            "Humein khwaab waab nahi aate hain",
+            "Hum bhul gaye hai sara kuch",
+            "Ab yahin humari baatein hai"
+          ]
+        },
+        {
+          "label": "Chorus",
+          "lines": [
+            "Ab bharne lage zakham hain",
+            "Aur zinda yeh kalam hai",
+            "Aur likhne wale hum hain haan ji haan",
+            "Har koi ab sanam hai",
+            "Aur dard bhi thode kam hain",
+            "Ab rotey nahin hum hai haan ji haan",
+            "Hmmm hmmm hmmm hmm",
+            "Hmmm hmmm hmmm hmm"
+          ]
+        },
+        {
+          "label": "Verse 4",
+          "lines": [
+            "Ab mann ye mauj mein rehta hai",
+            "Tujhe dekhne ki ab aadat nahi",
+            "Koi humein ghamzada kar jaye",
+            "Duniya mein aisi aafat nahi"
+          ]
+        },
+        {
+          "label": "Verse 5",
+          "lines": [
+            "Ye jhumke kangan kajal gajra",
+            "Rahe mere kisi kaam ke nahi",
+            "Main phool dekh ke hi khush hoon",
+            "Kisi noor ki mujhko chahat nahin"
+          ]
+        },
+        {
+          "label": "Verse 6",
+          "lines": [
+            "Hum nahi ab tere mohtaj hai",
+            "Tanha hum nahi zamana yeh sath hai"
+          ]
+        },
+        {
+          "label": "Verse 7",
+          "lines": [
+            "Vo leke aaye the maikhana",
+            "Karne humein madhosh yahan",
+            "Dekh ke haath mein shama mere",
+            "Woh laut gaye phir jaane kahan"
+          ]
+        },
+        {
+          "label": "Verse 8",
+          "lines": [
+            "Vo leke aaye the paimana",
+            "Naapne mere dard yahan",
+            "Dekh ke mujhko hasta hua",
+            "Woh laut gaye phir jaane kahan"
+          ]
+        },
+        {
+          "label": "Final Chorus",
+          "lines": [
+            "Hum bhi apne shehzaade hain",
+            "Humein khwaab waab nahi aate hain",
+            "Hum bhul gaye hai sara kuch",
+            "Ab yahi humari baatein hain",
+            "Ab bharne lage zakham hain",
+            "Aur zinda yeh kalam hai",
+            "Aur likhne wale hum hain haan ji haan",
+            "Har koi ab sanam hai",
+            "Aur dard bhi thode kam hain",
+            "Ab rotey nahin hum hai haan ji haan"
+          ]
+        },
+        {
+          "label": "Outro",
+          "lines": [
+            "Oooooo ooooooo oooooo oooooo",
+            "Oooooo ooooooo oooooo oooooo",
+            "Oooooo ooooooo oooooo oooooo",
+            "Oooooo ooooooo oooooo oooooo"
+          ]
+        }
+      ]
+    },
+    "seo": {
+      "title": "I Met Her Again by Maan Panu | Lyrics & Official Video",
+      "description": "Read I Met Her Again lyrics by Maan Panu and watch the official music video. Music by Tav and mixed and mastered by Hanish Taneja.",
+      "keywords": [
+        "I Met Her Again",
+        "I Met Her Again lyrics",
+        "I Met Her Again Maan Panu",
+        "Maan Panu",
+        "Maan Panu songs",
+        "Hindi song",
+        "Tav"
+      ]
+    }
+  },
+  {
     "id": "qH2sjvxt5v8",
     "title": "Timi Bina Ta Khalai Khalo Xa Yo Sansara | Anurag Khadka | Kasara | Viral Nepali Song",
     "displayTitle": "Timi Bina Ta Khalai Khalo Xa Yo Sansara",
@@ -234,11 +382,17 @@ window.SOUNDTOWN_SONGS = [
     "artist": "Hamza Malik & Zain Zohaib",
     "languages": ["ur"],
     "details": {
-      "description": "The official Alfaaz visualizer by Hamza Malik and Zain Zohaib, with song details and lyric-search links."
+      "description": "Alfaz song and Unki Tareef song by Hamza Malik and Zain Zohaib. Watch the official visualizer and read the viral song lyrics."
     },
     "tags": [
       "Urdu song",
+      "alfaz song",
+      "unki tareef song",
+      "unki tareef song lyrics",
+      "alfaz lyrics",
       "Alfaaz lyrics",
+      "Unki tareef mein kahein kya",
+      "Alfaaz hi nahi hain",
       "Hamza Malik",
       "Zain Zohaib",
       "Hamza Malik and Zain Zohaib Alfaaz",
@@ -313,9 +467,14 @@ window.SOUNDTOWN_SONGS = [
       ]
     },
     "seo": {
-      "title": "Alfaaz by Hamza Malik & Zain Zohaib | Official Visualizer",
-      "description": "Watch the official Alfaaz visualizer by Hamza Malik and Zain Zohaib. Explore the song and find Alfaaz lyrics.",
+      "title": "Alfaz Song - Unki Tareef Song Lyrics | Alfaaz",
+      "description": "Alfaz song and Unki Tareef song lyrics by Hamza Malik and Zain Zohaib. Watch the official visualizer and read: Unki tareef mein kahein kya.",
       "keywords": [
+        "alfaz song",
+        "unki tareef song",
+        "unki tareef song lyrics",
+        "alfaz lyrics",
+        "Unki tareef mein kahein kya Alfaaz hi nahi hain Jo kuch mera hai sab kuch unka Unse zyada kasam se humko",
         "Alfaaz",
         "Alfaaz lyrics",
         "Alfaaz Hamza Malik",
