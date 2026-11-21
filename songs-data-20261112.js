@@ -1441,9 +1441,10 @@ window.SOUNDTOWN_SONGS = [
     "id": "0UPDBODtxzw",
     "title": "DRACULA | JENNIE & Tame Impala",
     "displayTitle": "DRACULA",
+    "slug": "dracula-jennie-tame-impala-lyrics",
     "artist": "Tame Impala & JENNIE",
     "languages": ["en"],
-    "tags": ["English song", "Dracula lyrics", "Tame Impala", "JENNIE"],
+    "tags": ["Dracula", "JENNIE", "Tame Impala", "Dracula Lyrics", "JENNIE Lyrics", "Tame Impala Lyrics", "Pop Music", "International Music", "Song Lyrics", "New Songs 2026", "English Lyrics", "Dracula Song"],
     "lyrics": {
       "romanized": [
         {"label": "Intro", "lines": ["Oh-oh-oh-oh-oh, oh-oh-oh-oh-oh", "Oh-oh-oh-oh-oh, oh-oh-oh-oh-oh"]},
@@ -1459,9 +1460,9 @@ window.SOUNDTOWN_SONGS = [
       ]
     },
     "seo": {
-      "title": "DRACULA by JENNIE & Tame Impala | Lyrics & Official Video",
-      "description": "Watch the official Dracula JENNIE Remix lyric video by Tame Impala and JENNIE. Find lyrics on Genius.",
-      "keywords": ["Dracula", "Dracula lyrics", "Tame Impala", "JENNIE", "English song"]
+      "title": "DRACULA - JENNIE & Tame Impala Lyrics",
+      "description": "Read Dracula lyrics by JENNIE and Tame Impala. Explore the full English lyrics, including \"Run from the sunlight, Dracula.\"",
+      "keywords": ["Dracula lyrics", "JENNIE Dracula lyrics", "Tame Impala Dracula lyrics", "Dracula song lyrics", "JENNIE and Tame Impala song", "Run from the sunlight Dracula lyrics", "Dracula full lyrics"]
     }
   },
   {
