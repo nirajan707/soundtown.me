@@ -238,9 +238,7 @@ function songUrl(song) {
 }
 
 function songPageUrl(song) {
-  const url = new URL(siteHomeUrl);
-  url.searchParams.set("song", song.id);
-  return url.href;
+  return new URL(`songs/${encodeURIComponent(song.id)}/`, siteHomeUrl).href;
 }
 
 function renderSongCard(song) {
@@ -606,7 +604,12 @@ function restoreRoute() {
   const staticMatch = window.location.pathname.match(/^\/songs\/([A-Za-z0-9_-]{11})\/(?:index\.html)?$/);
   const songId = querySongId || (legacyMatch && legacyMatch[1]) || (staticMatch && staticMatch[1]);
   const song = songId ? songs.find((item) => item.id === songId) : null;
-  if (song) openSong(song, false);
+  if (song) {
+    openSong(song, false);
+    if (querySongId || legacyMatch) {
+      window.history.replaceState({ songId: song.id }, "", songPageUrl(song));
+    }
+  }
   else {
     returnHome(false);
     const query = new URLSearchParams(window.location.search).get("q");

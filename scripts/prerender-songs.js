@@ -94,7 +94,7 @@ function lyricsMarkup(song) {
 
 function relatedMarkup(song) {
   const related = songs.filter((item) => item.id !== song.id).slice(0, 4);
-  return related.map((item) => `<a class="song-card" href="/?song=${encodeURIComponent(item.id)}" data-song-id="${escapeHtml(item.id)}">
+  return related.map((item) => `<a class="song-card" href="/songs/${encodeURIComponent(item.id)}/" data-song-id="${escapeHtml(item.id)}">
     <span class="card-thumbnail"><img src="https://i.ytimg.com/vi/${encodeURIComponent(item.id)}/hqdefault.jpg" alt="${escapeHtml(`${songName(item)} by ${item.artist || "the artist"} official video`)}" loading="lazy"></span>
     <span class="card-title">${escapeHtml(songName(item))}</span>
     <span class="card-subtitle">${escapeHtml(item.artist || item.title)}</span>
@@ -110,7 +110,7 @@ function renderSongPage(song) {
       : "Read the available lyrics and watch the official music video on Sound Town."
   }`;
   const videoId = isSoundTown(song) ? song.youtubeVideoId : song.id;
-  const canonical = `https://soundtown.me/?song=${encodeURIComponent(song.id)}`;
+  const canonical = `https://soundtown.me/songs/${encodeURIComponent(song.id)}/`;
   const keywords = [...new Set([...(seo.keywords || []), ...(song.tags || []), ...(song.keywords || [])])].join(", ");
   let html = template;
   html = html.replace(/<meta name="description" content="[^"]*" \/>/, `<meta name="description" content="${escapeHtml(description.slice(0, 160))}" />`);
